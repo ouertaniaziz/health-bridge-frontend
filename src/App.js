@@ -1,16 +1,14 @@
 import React from 'react';
-import { ChakraProvider, Box, Text, Grid, theme } from '@chakra-ui/react';
+import { ChakraProvider, Box, Text, Grid } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-
+import { theme } from './theme';
+import RoutesPage from './components/index';
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <Text>notre application HealthBridge</Text>
-        </Grid>
-      </Box>
+      {/*          <ColorModeSwitcher justifySelf="flex-end" />
+       */}
+      <RoutesPage />
     </ChakraProvider>
   );
 }
