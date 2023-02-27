@@ -261,7 +261,7 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: 'Inspiration',
+    label: 'Home',
     children: [
       {
         label: 'Explore Design Work',
@@ -269,14 +269,14 @@ const NAV_ITEMS = [
         href: '#',
       },
       {
-        label: 'New & Noteworthy',
+        label: 'about',
         subLabel: 'Up-and-coming Designers',
         href: '#',
       },
     ],
   },
   {
-    label: 'Find Work',
+    label: 'contact us',
     children: [
       {
         label: 'Job Board',
@@ -284,7 +284,7 @@ const NAV_ITEMS = [
         href: '#',
       },
       {
-        label: 'Freelance Projects',
+        label: 'Blogs',
         subLabel: 'An exclusive list for contract work',
         href: '#',
       },
