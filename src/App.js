@@ -2,15 +2,18 @@ import React from 'react';
 import { ChakraProvider, Box, Text, Grid } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { theme } from './theme';
-import RoutesPage from './components/index';
-import BlogsComponent from './components/Blogs/Blogs';
+import RoutesPage from './components/routing';
+import BlogsComponent from './components/frontOffice/Blogs/blog';
+import { BrowserRouter } from 'react-router-dom';
+
 function App() {
   return (
     <ChakraProvider theme={theme}>
       {/*          <ColorModeSwitcher justifySelf="flex-end" />
        */}
-      <RoutesPage />
-      <BlogsComponent />
+      <BrowserRouter>
+        <RoutesPage />
+      </BrowserRouter>
     </ChakraProvider>
   );
 }

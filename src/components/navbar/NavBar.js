@@ -15,6 +15,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Spacer,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -59,14 +60,13 @@ export default function WithSubnavigation() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            Logo
+            HealthBridge Logo
           </Text>
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Flex display={{ base: 'none', md: 'flex' }} ml={400}>
             <DesktopNav />
           </Flex>
         </Flex>
-
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
@@ -79,6 +79,9 @@ export default function WithSubnavigation() {
             fontWeight={400}
             variant={'link'}
             href={'#'}
+            _hover={{
+              bg: 'blue.300',
+            }}
           >
             Sign In
           </Button>
@@ -91,7 +94,7 @@ export default function WithSubnavigation() {
             bg={'pink.400'}
             href={'#'}
             _hover={{
-              bg: 'pink.300',
+              bg: 'blue.300',
             }}
           >
             Sign Up
@@ -262,40 +265,42 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: 'Home',
+    href: '/home',
     children: [
       {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
+        label: 'Explore Our Application',
+        subLabel: 'learn more about our app',
         href: '#',
       },
       {
         label: 'about',
-        subLabel: 'Up-and-coming Designers',
-        href: '#',
+        subLabel: 'who are we',
+        href: '/about',
       },
     ],
   },
   {
     label: 'contact us',
+    href: '/contact',
     children: [
       {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
+        label: 'Doctors',
+        subLabel: 'the doctors who have collaborated with us',
         href: '#',
       },
       {
         label: 'Blogs',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
+        subLabel: 'explore novelties in the field of medicine',
+        href: '/blog',
       },
     ],
   },
   {
-    label: 'Learn Design',
+    label: 'section..',
     href: '#',
   },
   {
-    label: 'Hire Designers',
+    label: 'section',
     href: '#',
   },
 ];
