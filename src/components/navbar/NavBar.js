@@ -75,10 +75,12 @@ export default function WithSubnavigation() {
         >
           <Button
             as={'a'}
+            display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}
+            fontWeight={600}
+            color={'white'}
+            bg={'blue.400'}
+            href={'signUp'}
             _hover={{
               bg: 'blue.300',
             }}
@@ -91,8 +93,8 @@ export default function WithSubnavigation() {
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
-            bg={'pink.400'}
-            href={'#'}
+            bg={'blue.400'}
+            href={'signUp'}
             _hover={{
               bg: 'blue.300',
             }}
