@@ -1,27 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Progress,
-  Box,
-  ButtonGroup,
-  Button,
-  Heading,
-  Flex,
-  FormControl,
-  GridItem,
-  FormLabel,
-  Input,
-  Select,
-  SimpleGrid,
-  InputLeftAddon,
-  InputGroup,
-  Textarea,
-  FormHelperText,
-  InputRightElement,
-} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Progress, Box, ButtonGroup, Button, Flex } from '@chakra-ui/react';
 import { Form1 } from './firstUserForm';
 import { Form2 } from './secondUserForm';
 import { Form3 } from './thirdUserForm';
 import { useToast } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
+import { setState } from '../feature/signUp';
 {
   /*start pull request */
 }
@@ -30,22 +14,10 @@ export default function Multistep() {
   const toast = useToast();
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(33.33);
-  const [dataForm1, setDataForm1] = useState({
-    name: '',
-    LastName: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-  });
-
-  const sendData = data => {
-    setDataForm1(dataForm1);
+  const state = useSelector(state => state.formSignUp.value);
+  const sendStep = data => {
+    setStep(step + data);
   };
-  useEffect(() => {
-    setStep(step + 1);
-  }, [dataForm1]);
-
   return (
     <>
       <Box
@@ -63,10 +35,11 @@ export default function Multistep() {
           mx="5%"
           isAnimated
         ></Progress>
+
         {step === 1 ? (
-          <Form1 sendData={sendData} />
+          <Form1 sendStep={sendStep} />
         ) : step === 2 ? (
-          <Form2 />
+          <Form2 sendStep={sendStep} />
         ) : (
           <Form3 />
         )}
@@ -91,6 +64,7 @@ export default function Multistep() {
                 isDisabled={step === 3}
                 onClick={() => {
                   setStep(step + 1);
+                  console.log(state);
                   if (step === 3) {
                     setProgress(100);
                   } else {

@@ -45,3 +45,21 @@ export function validatePhone(value) {
   }
   return error;
 }
+export function validateString(value) {
+  let error;
+  if (!value) {
+    error = 'email';
+  } else if (value.toLowerCase() !== 'aziz') {
+    error = 'your name should be aziz';
+  }
+  return error;
+}
+export function validateNumber(value) {
+  let error;
+  if (!value) {
+    error = 'email';
+  } else if (value.toLowerCase() !== 'aziz') {
+    error = 'your name should be aziz';
+  }
+  return error;
+}

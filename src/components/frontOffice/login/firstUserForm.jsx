@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setFormOne } from '../feature/signUp';
 import {
   Button,
   Heading,
@@ -20,13 +22,14 @@ import {
   validatePhone,
 } from './validationForm';
 import { Field, Form, Formik } from 'formik';
-import axios from 'axios';
 
 //change validateurs
 
 export const Form1 = props => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+  
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -42,14 +45,18 @@ export const Form1 = props => {
           password: '',
           confirmPassword: '',
         }}
-        
         onSubmit={(values, actions) => {
-          // submitForm(values);
-          props.sendData(JSON.stringify(values, null, 2));
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            actions.setSubmitting(false);
-          }, 1000);
+          dispatch(
+            setFormOne({
+              name: values.name,
+              LastName: values.LastName,
+              email: values.email,
+              phone: values.phone,
+              password: values.password,
+              confirmPassword: values.confirmPassword,
+            })
+          );
+          props.sendStep(1);
         }}
       >
         {props => (
