@@ -12,6 +12,15 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import ReCAPTCHA from "react-google-recaptcha";
+function onChange(value) {
+
+  console.log("Captcha value:", value);
+
+}
+
+
+
 
 export default function SimpleCard() {
   return (
@@ -52,6 +61,17 @@ export default function SimpleCard() {
                 <Checkbox>Remember me</Checkbox>
                 <Link color={'blue.400'}>Forgot password?</Link>
               </Stack>
+              <ReCAPTCHA
+
+              sitekey="6LcfK_UkAAAAALd7RjQpjskPl93BxuuwZ2q5EIuM"
+
+              onChange={onChange}
+
+               />
+             
+
+
+
               <Button
                 bg={'blue.400'}
                 color={'white'}
