@@ -6,6 +6,7 @@ export const formSignUpSlice = createSlice({
     value: {
       name: '',
       LastName: '',
+      username: '',
       email: '',
       phone: '',
       password: '',
@@ -14,6 +15,7 @@ export const formSignUpSlice = createSlice({
       city: '',
       state: '',
       postal_code: '',
+      role: '',
     },
   },
   reducers: {
@@ -24,6 +26,14 @@ export const formSignUpSlice = createSlice({
       state.value.phone = action.payload.phone;
       state.value.password = action.payload.password;
       state.value.confirmPassword = action.payload.confirmPassword;
+      state.value.role = action.payload.role;
+      state.value.username = action.payload.username;
+    },
+    setFormtwo: (state, action) => {
+      state.value.StreetAddress = action.payload.StreetAddress;
+      state.value.city = action.payload.city;
+      state.value.state = action.payload.state;
+      state.value.postal_code = action.payload.postal_code;
     },
     setLastName: (state, action) => {
       state.value.LastName = action.payload.LastName;
@@ -56,6 +66,7 @@ export const formSignUpSlice = createSlice({
 });
 export const {
   setFormOne,
+  setFormtwo,
   setLastName,
   setEmail,
   setPhone,

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Progress, Box, ButtonGroup, Button, Flex } from '@chakra-ui/react';
 import { Form1 } from './firstUserForm';
 import { Form2 } from './secondUserForm';
 import { Form3 } from './thirdUserForm';
 import { useToast } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { setState } from '../feature/signUp';
+import { addUser } from './signUp.Service';
+import PatienForm from './patientForm';
 {
   /*start pull request */
 }
@@ -17,7 +18,18 @@ export default function Multistep() {
   const state = useSelector(state => state.formSignUp.value);
   const sendStep = data => {
     setStep(step + data);
+    console.log(step);
   };
+  useEffect(() => {
+    if (step === 1) {
+      setProgress(33.33);
+    } else if (step === 2) {
+      setProgress(66.66);
+    } else {
+      setProgress(100);
+    }
+  }, [step]);
+
   return (
     <>
       <Box
@@ -40,10 +52,12 @@ export default function Multistep() {
           <Form1 sendStep={sendStep} />
         ) : step === 2 ? (
           <Form2 sendStep={sendStep} />
+        ) : state.role === 'patient' ? (
+          <PatienForm sendStep={sendStep} />
         ) : (
-          <Form3 />
+          state.role === 'doctor'
         )}
-        <ButtonGroup mt="5%" w="100%">
+        {/*<ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
               <Button
@@ -64,7 +78,7 @@ export default function Multistep() {
                 isDisabled={step === 3}
                 onClick={() => {
                   setStep(step + 1);
-                  console.log(state);
+                  addUser(state);
                   if (step === 3) {
                     setProgress(100);
                   } else {
@@ -83,6 +97,7 @@ export default function Multistep() {
                 colorScheme="red"
                 variant="solid"
                 onClick={() => {
+                  addUser();
                   toast({
                     title: 'Account created.',
                     description: "We've created your account for you.",
@@ -96,7 +111,7 @@ export default function Multistep() {
               </Button>
             ) : null}
           </Flex>
-        </ButtonGroup>
+              </ButtonGroup>*/}
       </Box>
     </>
   );

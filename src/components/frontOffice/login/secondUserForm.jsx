@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setFormtwo } from '../feature/signUp';
 import {
   Heading,
   FormControl,
@@ -12,9 +14,15 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
-import { validateString, validateNumber } from './validationForm';
+import {
+  validatePostalCode,
+  validateStateProvince,
+  validateCity,
+  validateStreetAddress,
+} from './validationForm';
 export const Form2 = props => {
   const handleBack = () => props.sendStep(-1);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -29,6 +37,14 @@ export const Form2 = props => {
           postal_code: '',
         }}
         onSubmit={(values, actions) => {
+          dispatch(
+            setFormtwo({
+              StreetAddress: values.StreetAddress,
+              city: values.city,
+              state: values.state,
+              postal_code: values.postal_code,
+            })
+          );
           props.sendStep(1);
         }}
       >
@@ -62,7 +78,7 @@ export const Form2 = props => {
                 <option>Mexico</option>
               </Select>
             </FormControl>
-            <Field name="StreetAddress" validate={validateString}>
+            <Field name="StreetAddress" validate={validateStreetAddress}>
               {({ field, form }) => (
                 <FormControl
                   as={GridItem}
@@ -101,7 +117,7 @@ export const Form2 = props => {
                 </FormControl>
               )}
             </Field>
-            <Field name="city" validate={validateString}>
+            <Field name="city" validate={validateCity}>
               {({ field, form }) => (
                 <FormControl
                   as={GridItem}
@@ -136,7 +152,7 @@ export const Form2 = props => {
                 </FormControl>
               )}
             </Field>
-            <Field name="state" validate={validateString}>
+            <Field name="state" validate={validateStateProvince}>
               {({ field, form }) => (
                 <FormControl
                   as={GridItem}
@@ -171,7 +187,7 @@ export const Form2 = props => {
                 </FormControl>
               )}
             </Field>
-            <Field name="postal_code" validate={validateNumber}>
+            <Field name="postal_code" validate={validatePostalCode}>
               {({ field, form }) => (
                 <FormControl
                   as={GridItem}
