@@ -30,6 +30,7 @@ export default function SimpleCard() {
   const { isLoggedIn } = useSelector(state => state.auth);
   const { message } = useSelector(state => state.message);
   const dispatch = useDispatch();
+  const { user: currentUser } = useSelector(state => state.auth);
 
   useEffect(() => {
     dispatch(clearMessage());
@@ -60,11 +61,13 @@ export default function SimpleCard() {
         setLoading(false);
       });
   };
-
-  if (isLoggedIn) {
-    return <Navigate to="/profile" />;
+  if (currentUser) {
+    if (currentUser.role.includes('doctor')) {
+      return <Navigate to="/doctor" />;
+    } else if (currentUser.role.includes('patient')) {
+      return <Navigate to="/patient" />;
+    }
   }
-
   return (
     <Flex minH={'100vh'} align={'center'} justify={'center'} bg={color1}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>

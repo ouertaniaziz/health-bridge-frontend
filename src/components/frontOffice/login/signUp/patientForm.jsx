@@ -13,6 +13,7 @@ import {
   ButtonGroup,
   Flex,
 } from '@chakra-ui/react';
+
 import { addUser } from '../service/auth.Service';
 
 import { useSelector } from 'react-redux';
@@ -20,6 +21,8 @@ import { useToast } from '@chakra-ui/react';
 
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { setFormpatient } from '../../feature/signUp';
 
 const validationSchema = Yup.object().shape({
   dateOfBirth: Yup.date().required('Date of birth is required'),
@@ -36,6 +39,7 @@ export default function PatienForm(props) {
   const toast = useToast();
   const state = useSelector(state => state.formSignUp.value);
   const handleBack = () => props.sendStep(-1);
+  const dispatch = useDispatch();
 
   return (
     <Box maxW="md" mx="auto">
@@ -52,7 +56,18 @@ export default function PatienForm(props) {
           testResults: '',
         }}
         onSubmit={values => {
-          console.log(state);
+          dispatch(
+            setFormpatient({
+              dateOfBirth: values.dateOfBirth,
+              bloodGroup: values.bloodGroup,
+              medicalHistory: values.medicalHistory,
+              medications: values.medications,
+              insuranceInformation: values.insuranceInformation,
+              symptoms: values.symptoms,
+              testResults: values.testResults,
+              sex: values.sex,
+            })
+          );
           addUser(state);
         }}
         validationSchema={validationSchema}

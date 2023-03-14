@@ -15,7 +15,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  Spacer,
+  HStack,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -23,9 +23,12 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import ActiveUserComponents from './activeUserComponents';
+import { useSelector } from 'react-redux';
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+  const { isLoggedIn } = useSelector(state => state.auth);
 
   return (
     <Box>
@@ -73,29 +76,35 @@ export default function WithSubnavigation() {
           direction={'row'}
           spacing={6}
         >
-          <Button
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'signIn'}
-          >
-            Sign In
-          </Button>
-          <Button
-            as={'a'}
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'pink.400'}
-            href={'signUp'}
-            _hover={{
-              bg: 'pink.300',
-            }}
-          >
-            Sign Up
-          </Button>
+          {!isLoggedIn ? (
+            <HStack>
+              <Button
+                as={'a'}
+                fontSize={'sm'}
+                fontWeight={400}
+                variant={'link'}
+                href={'signIn'}
+              >
+                Sign In
+              </Button>
+              <Button
+                as={'a'}
+                display={{ base: 'none', md: 'inline-flex' }}
+                fontSize={'sm'}
+                fontWeight={600}
+                color={'white'}
+                bg={'pink.400'}
+                href={'signUp'}
+                _hover={{
+                  bg: 'pink.300',
+                }}
+              >
+                Sign Up
+              </Button>
+            </HStack>
+          ) : (
+            <ActiveUserComponents />
+          )}
         </Stack>
       </Flex>
 
