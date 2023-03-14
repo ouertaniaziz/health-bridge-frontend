@@ -25,7 +25,7 @@ export const formSignUpSlice = createSlice({
       insuranceInformation: '',
       symptoms: '',
       testResults: '',
-      sex: '',
+      sex: 'Male',
     },
   },
   reducers: {

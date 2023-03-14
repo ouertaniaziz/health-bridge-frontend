@@ -65,7 +65,6 @@ export default function PatienForm(props) {
               insuranceInformation: values.insuranceInformation,
               symptoms: values.symptoms,
               testResults: values.testResults,
-              sex: values.sex,
             })
           );
           addUser(state);

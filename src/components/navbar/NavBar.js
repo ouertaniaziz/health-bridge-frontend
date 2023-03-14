@@ -1,4 +1,5 @@
 import React from 'react';
+import './NavBar.css';
 import {
   Box,
   Flex,
@@ -63,7 +64,7 @@ export default function WithSubnavigation() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            HealthBridge Logo
+            <img src="heathbridgelogo.png" alt="logo" className="imagelogo" />
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={400}>
@@ -80,6 +81,7 @@ export default function WithSubnavigation() {
             <HStack>
               <Button
                 as={'a'}
+                color={'#004AAD'}
                 fontSize={'sm'}
                 fontWeight={400}
                 variant={'link'}
@@ -93,10 +95,10 @@ export default function WithSubnavigation() {
                 fontSize={'sm'}
                 fontWeight={600}
                 color={'white'}
-                bg={'pink.400'}
+                bg={'#367DDD'}
                 href={'signUp'}
                 _hover={{
-                  bg: 'pink.300',
+                  bg: '#367DDD',
                 }}
               >
                 Sign Up
@@ -302,11 +304,11 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: 'section..',
-    href: '#',
+    label: 'Abonnements',
+    href: '/Abonnement',
   },
   {
-    label: 'section',
-    href: '#',
+    label: 'community',
+    href: '/community',
   },
 ];
