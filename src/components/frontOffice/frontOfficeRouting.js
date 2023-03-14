@@ -5,7 +5,9 @@ import { Route, Routes } from 'react-router-dom';
 import BlogsComponent from './Blogs/blog';
 import Home from './HomePage/Home';
 import Contact from './contact/contact';
+import Community from './Community/Community';
 import About from './About/About';
+import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
 const FrontOfficeRoutes = () => {
@@ -35,6 +37,8 @@ const FrontOfficeRoutes = () => {
         <Route path="blog" element={<BlogsComponent />} />
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
+        <Route path="community" element={<Community />} />
+        <Route path="abonnement" element={<Abonnements />} />
         <Route path="signUp" element={<Multistep />} />
         <Route path="signIn" element={<SimpleCard />} />
         {isPatient && <Route path="patient/*" element={<PatientRoutes />} />}
