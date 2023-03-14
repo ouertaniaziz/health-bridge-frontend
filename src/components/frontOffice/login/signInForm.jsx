@@ -13,6 +13,9 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import ReCAPTCHA from "react-google-recaptcha";
+import { useEffect } from 'react';
+
+
 function onChange(value) {
 
   console.log("Captcha value:", value);
@@ -23,7 +26,27 @@ function onChange(value) {
 
 
 export default function SimpleCard() {
+  function handlecallbackresponse(response){
+    // console.log("encoded jwt id token:"+response.credential);
+      }
+    
+      useEffect(()=>{
+        /*global google */
+        google.accounts.id.initialize({
+          client_id:"102321854344-7hqudjfshv1gjdkcuq367213a13cpctt.apps.googleusercontent.com",
+          callback:handlecallbackresponse
+        });
+        google.accounts.id.renderButton(
+          document.getElementById("signindiv"),{
+            theme:"outline",size:"large"
+          }
+        );
+    
+      },[]);
+  
+  
   return (
+    
     <Flex
       minH={'100vh'}
       align={'center'}
@@ -67,11 +90,12 @@ export default function SimpleCard() {
 
               onChange={onChange}
 
+
                />
-             
 
 
-
+<div className="app"><div id="signindiv"> </div></div>
+       
               <Button
                 bg={'blue.400'}
                 color={'white'}
@@ -81,6 +105,8 @@ export default function SimpleCard() {
               >
                 Sign in
               </Button>
+             
+                 
             </Stack>
           </Stack>
         </Box>
