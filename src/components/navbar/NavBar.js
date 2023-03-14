@@ -1,5 +1,5 @@
 import React from 'react';
-import './NavBar.css' ;
+import './NavBar.css';
 import {
   Box,
   Flex,
@@ -16,7 +16,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  Spacer,
+  HStack,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -24,9 +24,12 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import ActiveUserComponents from './activeUserComponents';
+import { useSelector } from 'react-redux';
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+  const { isLoggedIn } = useSelector(state => state.auth);
 
   return (
     <Box>
@@ -61,10 +64,8 @@ export default function WithSubnavigation() {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-          <img src="heathbridgelogo.png" alt="logo" className="imagelogo" />
-          
+            <img src="heathbridgelogo.png" alt="logo" className="imagelogo" />
           </Text>
-
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={400}>
             <DesktopNav />
@@ -76,31 +77,36 @@ export default function WithSubnavigation() {
           direction={'row'}
           spacing={6}
         >
-       
-          <Button
-            as={'a'}
-            color={'#004AAD'}
-            fontSize={'sm'}
-            fontWeight={800}
-            variant={'link'}
-            href={'signIn'}
-          >
-            Sign In
-          </Button>
-          <Button
-            as={'a'}
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'#367DDD'}
-            href={'signUp'}
-            _hover={{
-              bg: '#367DDD',
-            }}
-          >
-            Sign Up
-          </Button>
+          {!isLoggedIn ? (
+            <HStack>
+              <Button
+                as={'a'}
+                color={'#004AAD'}
+                fontSize={'sm'}
+                fontWeight={400}
+                variant={'link'}
+                href={'signIn'}
+              >
+                Sign In
+              </Button>
+              <Button
+                as={'a'}
+                display={{ base: 'none', md: 'inline-flex' }}
+                fontSize={'sm'}
+                fontWeight={600}
+                color={'white'}
+                bg={'#367DDD'}
+                href={'signUp'}
+                _hover={{
+                  bg: '#367DDD',
+                }}
+              >
+                Sign Up
+              </Button>
+            </HStack>
+          ) : (
+            <ActiveUserComponents />
+          )}
         </Stack>
       </Flex>
 

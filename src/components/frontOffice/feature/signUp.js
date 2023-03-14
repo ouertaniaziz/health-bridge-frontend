@@ -18,6 +18,14 @@ export const formSignUpSlice = createSlice({
       state: '',
       postal_code: '',
       role: '',
+      dateOfBirth: '',
+      bloodGroup: '',
+      medicalHistory: '',
+      medications: '',
+      insuranceInformation: '',
+      symptoms: '',
+      testResults: '',
+      sex: 'Male',
     },
   },
   reducers: {
@@ -36,6 +44,15 @@ export const formSignUpSlice = createSlice({
       state.value.city = action.payload.city;
       state.value.state = action.payload.state;
       state.value.postal_code = action.payload.postal_code;
+    },
+    setFormpatient: (state, action) => {
+      state.value.dateOfBirth = action.payload.dateOfBirth;
+      state.value.bloodGroup = action.payload.bloodGroup;
+      state.value.medicalHistory = action.payload.medicalHistory;
+      state.value.medications = action.payload.medications;
+      state.value.insuranceInformation = action.payload.insuranceInformation;
+      state.value.symptoms = action.payload.symptoms;
+      state.value.testResults = action.payload.testResults;
     },
     setLastName: (state, action) => {
       state.value.LastName = action.payload.LastName;
@@ -69,6 +86,7 @@ export const formSignUpSlice = createSlice({
 export const {
   setFormOne,
   setFormtwo,
+  setFormpatient,
   setLastName,
   setEmail,
   setPhone,
