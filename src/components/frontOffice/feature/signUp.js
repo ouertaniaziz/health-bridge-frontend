@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import AuthService from '../login/service/auth.Service';
+import { setMessage } from './message';
 
 export const formSignUpSlice = createSlice({
   name: 'formSignUp',

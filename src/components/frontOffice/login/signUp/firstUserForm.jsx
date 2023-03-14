@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setFormOne } from '../feature/signUp';
+import { setFormOne } from '../../feature/signUp';
 import {
   Button,
   Heading,
@@ -22,7 +22,7 @@ import {
   validatePassword,
   validateSecondePassword,
   validatePhone,
-} from './validationForm';
+} from '../service/validationForm';
 import { Field, Form, Formik } from 'formik';
 
 //change validateurs

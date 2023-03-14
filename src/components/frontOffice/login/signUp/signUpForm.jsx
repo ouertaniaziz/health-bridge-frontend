@@ -5,7 +5,7 @@ import { Form2 } from './secondUserForm';
 import { Form3 } from './thirdUserForm';
 import { useToast } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { addUser } from './signUp.Service';
+import { addUser } from '../service/auth.Service';
 import PatienForm from './patientForm';
 {
   /*start pull request */

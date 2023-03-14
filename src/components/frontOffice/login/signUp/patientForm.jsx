@@ -13,7 +13,7 @@ import {
   ButtonGroup,
   Flex,
 } from '@chakra-ui/react';
-import { addUser } from './signUp.Service';
+import { addUser } from '../service/auth.Service';
 
 import { useSelector } from 'react-redux';
 import { useToast } from '@chakra-ui/react';
@@ -52,6 +52,7 @@ export default function PatienForm(props) {
           testResults: '',
         }}
         onSubmit={values => {
+          console.log(state);
           addUser(state);
         }}
         validationSchema={validationSchema}

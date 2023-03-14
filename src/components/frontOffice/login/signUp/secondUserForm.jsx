@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setFormtwo } from '../feature/signUp';
+import { setFormtwo } from '../../feature/signUp';
 import {
   Heading,
   FormControl,
@@ -19,7 +19,7 @@ import {
   validateStateProvince,
   validateCity,
   validateStreetAddress,
-} from './validationForm';
+} from '../service/validationForm';
 export const Form2 = props => {
   const handleBack = () => props.sendStep(-1);
   const dispatch = useDispatch();
