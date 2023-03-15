@@ -11,6 +11,7 @@ import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
 import { Emailverificiation } from './Emailverification/Emailverificiation';
+
 const FrontOfficeRoutes = () => {
   const [isDoctor, setisDoctor] = useState(false);
   const [isPatient, setisPatient] = useState(false);

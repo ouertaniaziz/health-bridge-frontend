@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
@@ -19,8 +19,32 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import ReCAPTCHA from "react-google-recaptcha";
+
+
+
+function onChange(value) {
+  console.log("Captcha value:", value);
+}
+
 
 export default function SimpleCard() {
+  function handlecallbackresponse(response){
+    // console.log("encoded jwt id token:"+response.credential);
+  }
+
+  useEffect(()=>{
+    /*global google */
+    google.accounts.id.initialize({
+      client_id:"102321854344-7hqudjfshv1gjdkcuq367213a13cpctt.apps.googleusercontent.com",
+      callback:handlecallbackresponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("signindiv"),{
+        theme:"outline",size:"large"
+      }
+    );
+  },[]);
   let color1 = useColorModeValue('gray.50', 'gray.800');
   let color2 = useColorModeValue('white', 'gray.700');
   let navigate = useNavigate();
@@ -110,6 +134,16 @@ export default function SimpleCard() {
                     <Checkbox>Remember me</Checkbox>
                     <Link color={'blue.400'}>Forgot password?</Link>
                   </Stack>
+                  <ReCAPTCHA
+
+sitekey="6LeCPvUkAAAAAP7wfhR8Ku8YHgUXdt2Pc1hnAJMO"
+
+onChange={onChange}
+
+
+ />
+ <div className="app"><div id="signindiv"> </div></div>
+
                   <Button
                     bg={'blue.400'}
                     color={'white'}
