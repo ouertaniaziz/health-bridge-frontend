@@ -54,6 +54,12 @@ export const formSignUpSlice = createSlice({
       state.value.symptoms = action.payload.symptoms;
       state.value.testResults = action.payload.testResults;
     },
+    setFormpharmacist: (state, action) => {
+      state.value.dateOfBirth = action.payload.dateOfBirth;
+      state.value.sex=action.payload.sex;
+      state.value.pharmacie = action.payload.pharmacie;
+      state.value.insuranceInformation = action.payload.insuranceInformation;
+    },
     setLastName: (state, action) => {
       state.value.LastName = action.payload.LastName;
     },
@@ -87,6 +93,7 @@ export const {
   setFormOne,
   setFormtwo,
   setFormpatient,
+  setFormpharmacist,
   setLastName,
   setEmail,
   setPhone,
