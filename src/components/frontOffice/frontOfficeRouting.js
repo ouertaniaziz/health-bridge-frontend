@@ -10,6 +10,7 @@ import About from './About/About';
 import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
+import { Emailverificiation } from './Emailverification/Emailverificiation';
 const FrontOfficeRoutes = () => {
   const [isDoctor, setisDoctor] = useState(false);
   const [isPatient, setisPatient] = useState(false);
@@ -38,6 +39,7 @@ const FrontOfficeRoutes = () => {
         <Route path="contact" element={<Contact />} />
         <Route path="about" element={<About />} />
         <Route path="community" element={<Community />} />
+        <Route path="verify/:token" element={<Emailverificiation />}/>
         <Route path="abonnement" element={<Abonnements />} />
         <Route path="signUp" element={<Multistep />} />
         <Route path="signIn" element={<SimpleCard />} />
