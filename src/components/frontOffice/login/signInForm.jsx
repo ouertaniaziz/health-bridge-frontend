@@ -13,40 +13,36 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import ReCAPTCHA from "react-google-recaptcha";
+import { useContext } from "react";
 import { useEffect } from 'react';
 
 
+
 function onChange(value) {
-
   console.log("Captcha value:", value);
-
 }
 
-
-
-
 export default function SimpleCard() {
+ 
+
   function handlecallbackresponse(response){
     // console.log("encoded jwt id token:"+response.credential);
+  }
+
+  useEffect(()=>{
+    /*global google */
+    google.accounts.id.initialize({
+      client_id:"102321854344-7hqudjfshv1gjdkcuq367213a13cpctt.apps.googleusercontent.com",
+      callback:handlecallbackresponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("signindiv"),{
+        theme:"outline",size:"large"
       }
-    
-      useEffect(()=>{
-        /*global google */
-        google.accounts.id.initialize({
-          client_id:"102321854344-7hqudjfshv1gjdkcuq367213a13cpctt.apps.googleusercontent.com",
-          callback:handlecallbackresponse
-        });
-        google.accounts.id.renderButton(
-          document.getElementById("signindiv"),{
-            theme:"outline",size:"large"
-          }
-        );
-    
-      },[]);
-  
-  
+    );
+  },[]);
+
   return (
-    
     <Flex
       minH={'100vh'}
       align={'center'}
@@ -77,12 +73,22 @@ export default function SimpleCard() {
             </FormControl>
             <Stack spacing={10}>
               <Stack
-                direction={{ base: 'column', sm: 'row' }}
+                direction={{ base: 'column', sm:'row' }}
                 align={'start'}
                 justify={'space-between'}
               >
                 <Checkbox>Remember me</Checkbox>
-                <Link color={'blue.400'}>Forgot password?</Link>
+
+                {/* <a
+                    href="#"
+                    onClick={() => nagigateToOtp()}
+                    className="text-gray-800"
+                  >
+                    Forgot password?
+                  </a> */}
+                 <Link color={'blue.400'}
+                    className="text-gray-800"
+                  >Forgot password?</Link> 
               </Stack>
               <ReCAPTCHA
 
@@ -95,6 +101,18 @@ export default function SimpleCard() {
 
 
 <div className="app"><div id="signindiv"> </div></div>
+
+{/* <LoginSocialFacebook
+          appId="1143048036370429"
+          onResolve={(response)=>{
+            console.log(response);
+          }}
+          onReject={(error)=>{
+            console.log(error);
+          }}
+        >
+          <FacebookLoginButton />
+        </LoginSocialFacebook> */}
        
               <Button
                 bg={'blue.400'}
@@ -105,7 +123,7 @@ export default function SimpleCard() {
               >
                 Sign in
               </Button>
-             
+              
                  
             </Stack>
           </Stack>

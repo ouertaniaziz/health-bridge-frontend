@@ -6,7 +6,9 @@ import Home from './HomePage/Home';
 import Contact from './contact/contact';
 import About from './About/About';
 import SimpleCard from './login/signInForm';
+
 import Multistep from './login/signUpForm';
+
 
 const FrontOfficeRoutes = () => {
   return (
@@ -17,6 +19,7 @@ const FrontOfficeRoutes = () => {
       <Route path="about" element={<About />} />
       <Route path="signUp" element={<Multistep />} />
       <Route path="signIn" element={<SimpleCard />} />
+      
     </Routes>
   );
 };
