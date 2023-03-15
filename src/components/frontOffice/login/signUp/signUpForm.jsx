@@ -7,6 +7,7 @@ import { useToast } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { addUser } from '../service/auth.Service';
 import PatienForm from './patientForm';
+import { PharmacistForm } from './PharmacistForm';
 {
   /*start pull request */
 }
@@ -54,9 +55,12 @@ export default function Multistep() {
           <Form2 sendStep={sendStep} />
         ) : state.role === 'patient' ? (
           <PatienForm sendStep={sendStep} />
-        ) : (
+        ) :  state.role==='pharmacist' ?(
+          <PharmacistForm sendStep={sendStep} />
+        ) :     (
           state.role === 'doctor'
-        )}
+        )
+        }
         {/*<ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
