@@ -10,6 +10,7 @@ import About from './About/About';
 import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
+
 const FrontOfficeRoutes = () => {
   const [isDoctor, setisDoctor] = useState(false);
   const [isPatient, setisPatient] = useState(false);
