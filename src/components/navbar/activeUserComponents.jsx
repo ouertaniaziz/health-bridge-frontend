@@ -9,7 +9,20 @@ import {
   MenuDivider,
   Center,
 } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { logout } from '../frontOffice/feature/signIn';
+import { useDispatch } from 'react-redux';
+
+//open pull request
 const ActiveUserComponents = () => {
+  const state = useSelector(state => state.auth.user);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  console.log(state);
+
   return (
     <Menu>
       <MenuButton
@@ -34,13 +47,21 @@ const ActiveUserComponents = () => {
         </Center>
         <br />
         <Center>
-          <p>Username</p>
+          <p>{state.username}</p>
         </Center>
         <br />
         <MenuDivider />
         <MenuItem>Your Servers</MenuItem>
         <MenuItem>Account Settings</MenuItem>
-        <MenuItem>Logout</MenuItem>
+        <MenuItem
+          onClick={() => {
+            dispatch(logout());
+            window.location.reload();
+            navigate('/home');
+          }}
+        >
+          Logout
+        </MenuItem>
       </MenuList>
     </Menu>
   );
