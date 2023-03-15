@@ -1,6 +1,16 @@
 import axiosInstance from '../../../../config/axios';
 export const addUser = data => {
-  axiosInstance.post('/signup', data);
+  console.log(data);
+  axiosInstance.post('/signup', data).then(
+    res => {
+      console.log('first');
+      return res;
+    },
+    error => {
+      console.log(error);
+      return error;
+    }
+  );
 };
 
 const login = (email, password) => {
@@ -20,6 +30,7 @@ const login = (email, password) => {
     });
 };
 const logout = () => {
+  
   localStorage.removeItem('user');
 };
 const authService = {
