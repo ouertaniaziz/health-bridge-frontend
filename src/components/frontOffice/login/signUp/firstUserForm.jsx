@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useRef,useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setFormOne } from '../../feature/signUp';
 import {
@@ -24,6 +24,7 @@ import {
   validatePhone,
 } from '../service/validationForm';
 import { Field, Form, Formik } from 'formik';
+import axiosInstance from '../../../../config/axios';
 
 //change validateurs
 
@@ -31,7 +32,24 @@ export const Form1 = props => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+  const [etat_mail,setetat_mail]=useState('');
+  const mail= useRef("");
+  const verif = async()=>{
+    const data_mail={
+      emaila:mail.current.value
+    }
+    //console.log(data_mail)
+    const res= await axiosInstance.post('/real_time',data_mail)
+    //console.log(res)
+    const datamail=await res.data.result
+    setetat_mail(datamail)
+   
+      
+  }
 
+
+
+  
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
@@ -138,7 +156,7 @@ export const Form1 = props => {
             <Field name="email" validate={validateEmail}>
               {({ field, form }) => (
                 <FormControl
-                  isInvalid={form.errors.email && form.touched.email}
+                  isInvalid={form.errors.email && form.touched.email }
                 >
                   <FormLabel htmlFor="email" fontWeight={'normal'}>
                     Email
@@ -146,7 +164,10 @@ export const Form1 = props => {
                   <Input
                     id="email"
                     placeholder="put your email here "
+                    ref={mail}
+                    
                     {...field}
+
                   />
                   <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                   <FormHelperText>We'll never share your email.</FormHelperText>
@@ -283,9 +304,12 @@ export const Form1 = props => {
                     colorScheme="teal"
                     variant="outline"
                     type="submit"
+                    onTouchMove={verif}
                   >
                     Next
                   </Button>
+                  
+                  
                 </Flex>
               </Flex>
             </ButtonGroup>
