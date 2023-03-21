@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
@@ -19,11 +19,14 @@ import {
   Text,
   useColorModeValue,
   FormErrorMessage,
+  useToast,
 } from '@chakra-ui/react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function SimpleCard() {
   const [captchaError, setcaptchaError] = useState(false);
+  const toast = useToast();
+
   function handlecallbackresponse(response) {
     // console.log("encoded jwt id token:"+response.credential);
   }
@@ -75,15 +78,22 @@ export default function SimpleCard() {
     const { username, password } = formValue;
     console.log(username, password);
     setLoading(true);
-
     dispatch(login({ username, password }))
       .unwrap()
       .then(res => {
-        console.log(res.user);
+        toast({
+          title: ` bonne navigation `,
+          status: 'success',
+          isClosable: true,
+        });
       })
       .catch(() => {
-        console.log('first');
         setLoading(false);
+        toast({
+          title: ` verifer votre username et mot de passe `,
+          status: 'error',
+          isClosable: true,
+        });
       });
   };
   if (currentUser) {
@@ -91,7 +101,7 @@ export default function SimpleCard() {
       return <Navigate to="/doctor" />;
     } else if (currentUser.role.includes('patient')) {
       return <Navigate to="/patient" />;
-    }
+    } else return <Navigate to="/home"></Navigate>;
   }
   return (
     <Flex minH={'100vh'} align={'center'} justify={'center'} bg={color1}>

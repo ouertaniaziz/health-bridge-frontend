@@ -56,7 +56,7 @@ export const formSignUpSlice = createSlice({
     },
     setFormpharmacist: (state, action) => {
       state.value.dateOfBirth = action.payload.dateOfBirth;
-      state.value.sex=action.payload.sex;
+      state.value.sex = action.payload.sex;
       state.value.pharmacie = action.payload.pharmacie;
       state.value.insuranceInformation = action.payload.insuranceInformation;
     },
@@ -104,4 +104,4 @@ export const {
   setState,
   setPostalCode,
 } = formSignUpSlice.actions;
-export default formSignUpSlice.reducer;
+export default formSignUpSlice;
