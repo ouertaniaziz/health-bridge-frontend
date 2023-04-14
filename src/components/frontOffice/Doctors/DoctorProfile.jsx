@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DoctorProfile = () => {
-  return <>test</>;
+  return <>open pull request</>;
 };
 
 //open pull request
