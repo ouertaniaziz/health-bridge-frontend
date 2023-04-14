@@ -76,11 +76,12 @@ export default function SimpleCard() {
 
   const handleLogin = formValue => {
     const { username, password } = formValue;
-    console.log(username, password);
     setLoading(true);
     dispatch(login({ username, password }))
       .unwrap()
       .then(res => {
+        console.log(res.user);
+
         toast({
           title: ` bonne navigation `,
           status: 'success',
@@ -97,11 +98,12 @@ export default function SimpleCard() {
       });
   };
   if (currentUser) {
+    console.log(currentUser);
     if (currentUser.role.includes('doctor')) {
       return <Navigate to="/doctor" />;
     } else if (currentUser.role.includes('patient')) {
       return <Navigate to="/patient" />;
-    } else return <Navigate to="/home"></Navigate>;
+    }
   }
   return (
     <Flex minH={'100vh'} align={'center'} justify={'center'} bg={color1}>

@@ -1,4 +1,5 @@
 import axiosInstance from '../../../../config/axios';
+import authHeader from './auth-header';
 export const addUser = data => {
   console.log(data);
   axiosInstance.post('/signup', data).then(
@@ -24,13 +25,17 @@ const login = (email, password) => {
     .then(response => {
       if (response.data.accessToken) {
         localStorage.setItem('user', JSON.stringify(response.data));
+        localStorage.setItem(
+          'token',
+          JSON.stringify(response.data.accessToken)
+        );
       }
 
       return response.data;
     });
 };
 const logout = () => {
-  
+  localStorage.removeItem('token');
   localStorage.removeItem('user');
 };
 const authService = {
