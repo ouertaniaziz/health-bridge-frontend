@@ -31,11 +31,14 @@ import {
   FiMenu,
   FiBell,
   FiChevronDown,
+  FiCalendar,
+  FiUsers,
+  FiFileText,
 } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { logout } from '../../frontOffice/feature/signIn';
+import { logout } from './feature/signIn';
 import { useDispatch } from 'react-redux';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
@@ -43,13 +46,22 @@ import { ReactText } from 'react';
 interface LinkItemProps {
   name: string;
   icon: IconType;
+  route: string;
 }
-const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+const LinkItemsDoctor: Array<LinkItemProps> = [
+  { name: 'Home', icon: FiHome, route: 'home' },
+  { name: 'Appointments', icon: FiCalendar, route: 'appointments' },
+  { name: 'Patients', icon: FiUsers, route: 'patients' },
+  { name: 'Prescriptions', icon: FiFileText, route: 'prescriptions' },
+  { name: 'Settings', icon: FiSettings, route: 'settings' },
+];
+
+const LinkItemsPatient: Array<LinkItemProps> = [
+  { name: 'Home', icon: FiHome, route: '' },
+  { name: 'Trending', icon: FiTrendingUp, route: '' },
+  { name: 'Explore', icon: FiCompass, route: '' },
+  { name: 'Favourites', icon: FiStar, route: '' },
+  { name: 'Settings', icon: FiSettings, route: '' },
 ];
 
 export default function SidebarWithHeader({
@@ -65,6 +77,7 @@ export default function SidebarWithHeader({
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
+        role={state.role}
       />
       <Drawer
         autoFocus={false}
@@ -76,7 +89,7 @@ export default function SidebarWithHeader({
         size="full"
       >
         <DrawerContent>
-          <SidebarContent onClose={onClose} />
+          <SidebarContent onClose={onClose} role={state.role} />
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
@@ -106,15 +119,23 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          <img src="heathbridgelogo.png" alt="logo" className="imagelogo" />
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
-      {LinkItems.map(link => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
-      ))}
+      {rest.role === 'doctor'
+        ? LinkItemsDoctor.map(link => (
+            <NavItem key={link.name} icon={link.icon} route={link.route}>
+              {link.name}
+            </NavItem>
+          ))
+        : rest.role === 'patient'
+        ? LinkItemsPatient.map(link => (
+            <NavItem key={link.name} icon={link.icon} route={link.route}>
+              {link.name}
+            </NavItem>
+          ))
+        : null}
     </Box>
   );
 };
@@ -122,11 +143,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
+  route: ReactText;
 }
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children, route, ...rest }: NavItemProps) => {
   return (
     <Link
-      href="#"
+      href={route}
       style={{ textDecoration: 'none' }}
       _focus={{ boxShadow: 'none' }}
     >
@@ -192,7 +214,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Logo
+        <img src="heathbridgelogo.png" alt="logo" className="imagelogo" />
       </Text>
 
       <HStack spacing={{ base: '0', md: '6' }}>

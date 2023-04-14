@@ -1,8 +1,7 @@
 import React from 'react';
-import SidebarWithHeader from './SideBarMenu';
 
 const DoctorProfile = () => {
-  return <SidebarWithHeader />;
+  return <>test</>;
 };
 
 //open pull request

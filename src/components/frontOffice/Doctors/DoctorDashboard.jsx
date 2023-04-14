@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const DoctorDashboard = () => {
-  return (
-    <div>doctorDashboard</div>
-  )
-}
+  return <>fgrgfd</>;
+};
 
-export default DoctorDashboard
+export default DoctorDashboard;
