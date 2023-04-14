@@ -1,25 +1,23 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { store } from '../config/store';
-import { Provider } from 'react-redux';
-
+import { useSelector } from 'react-redux';
+import SidebarWithHeader from './frontOffice/Doctors/SideBarMenu';
 import WithSubnavigation from './navbar/NavBar';
 const RoutesPage = () => {
   const FrontOfficeRoutes = React.lazy(() =>
     import('./frontOffice/frontOfficeRouting')
   );
+  const { isLoggedIn } = useSelector(state => state.auth);
 
   return (
     <>
       {' '}
-      <Provider store={store}>
-        <WithSubnavigation />
-        <Suspense>
-          <Routes>
-            <Route path="/*" element={<FrontOfficeRoutes />}></Route>
-          </Routes>
-        </Suspense>
-      </Provider>
+      {!isLoggedIn ? <WithSubnavigation /> : <SidebarWithHeader />}
+      <Suspense>
+        <Routes>
+          <Route path="/*" element={<FrontOfficeRoutes />}></Route>
+        </Routes>
+      </Suspense>
     </>
   );
 };

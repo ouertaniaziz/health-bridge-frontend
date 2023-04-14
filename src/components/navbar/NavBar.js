@@ -77,36 +77,32 @@ export default function WithSubnavigation() {
           direction={'row'}
           spacing={6}
         >
-          {!isLoggedIn ? (
-            <HStack>
-              <Button
-                as={'a'}
-                color={'#004AAD'}
-                fontSize={'sm'}
-                fontWeight={400}
-                variant={'link'}
-                href={'signIn'}
-              >
-                Sign In
-              </Button>
-              <Button
-                as={'a'}
-                display={{ base: 'none', md: 'inline-flex' }}
-                fontSize={'sm'}
-                fontWeight={600}
-                color={'white'}
-                bg={'#367DDD'}
-                href={'signUp'}
-                _hover={{
-                  bg: '#367DDD',
-                }}
-              >
-                Sign Up
-              </Button>
-            </HStack>
-          ) : (
-            <ActiveUserComponents />
-          )}
+          <HStack>
+            <Button
+              as={'a'}
+              color={'#004AAD'}
+              fontSize={'sm'}
+              fontWeight={400}
+              variant={'link'}
+              href={'signIn'}
+            >
+              Sign In
+            </Button>
+            <Button
+              as={'a'}
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize={'sm'}
+              fontWeight={600}
+              color={'white'}
+              bg={'#367DDD'}
+              href={'signUp'}
+              _hover={{
+                bg: '#367DDD',
+              }}
+            >
+              Sign Up
+            </Button>
+          </HStack>
         </Stack>
       </Flex>
 
