@@ -10,6 +10,8 @@ import About from './About/About';
 import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
+import Donation from './Donation/Donation';
+
 
 const FrontOfficeRoutes = () => {
   const [isDoctor, setisDoctor] = useState(false);
@@ -31,6 +33,7 @@ const FrontOfficeRoutes = () => {
 
   const PatientRoutes = React.lazy(() => import('./Patient/PatientRoutes'));
   const DoctorRoutes = React.lazy(() => import('./Doctors/DoctorRoutes'));
+   const DonationRoutes=React.lazy(()=>import ('./Donation/DonationRoutes.js'));
   return (
     <Suspense>
       <Routes>
@@ -40,10 +43,12 @@ const FrontOfficeRoutes = () => {
         <Route path="about" element={<About />} />
         <Route path="community" element={<Community />} />
         <Route path="abonnement" element={<Abonnements />} />
+        <Route path="donation" element={<Donation />} />
         <Route path="signUp" element={<Multistep />} />
         <Route path="signIn" element={<SimpleCard />} />
         {isPatient && <Route path="patient/*" element={<PatientRoutes />} />}
         {isDoctor && <Route path="doctor/*" element={<DoctorRoutes />} />}
+        <Route path="donation/*" element={<DonationRoutes/>} /> 
       </Routes>
     </Suspense>
   );
