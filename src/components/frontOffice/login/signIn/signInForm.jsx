@@ -4,6 +4,9 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { login } from '../../feature/signIn';
+import { setProfile } from '../../feature/signUp';
+
+import { getDoctor } from '../service/auth.Service';
 import { clearMessage } from '../../feature/message';
 import {
   Flex,
@@ -55,8 +58,6 @@ export default function SimpleCard() {
 
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector(state => state.auth);
-  const { message } = useSelector(state => state.message);
   const dispatch = useDispatch();
   const { user: currentUser } = useSelector(state => state.auth);
 
@@ -80,8 +81,6 @@ export default function SimpleCard() {
     dispatch(login({ username, password }))
       .unwrap()
       .then(res => {
-        console.log(res.user);
-
         toast({
           title: ` bonne navigation `,
           status: 'success',
