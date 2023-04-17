@@ -7,10 +7,11 @@ import Home from './HomePage/Home';
 import Contact from './contact/contact';
 import Community from './Community/Community';
 import About from './About/About';
+import Donationcomponent from './Donation/Donationscomponent'
 import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
-import Donation from './Donation/Donation';
+
 
 
 const FrontOfficeRoutes = () => {
@@ -33,7 +34,9 @@ const FrontOfficeRoutes = () => {
 
   const PatientRoutes = React.lazy(() => import('./Patient/PatientRoutes'));
   const DoctorRoutes = React.lazy(() => import('./Doctors/DoctorRoutes'));
-   const DonationRoutes=React.lazy(()=>import ('./Donation/DonationRoutes.js'));
+  const DonationRoutes = React.lazy(() => import('./Donation/DonationRoutes'));
+  
+
   return (
     <Suspense>
       <Routes>
@@ -43,12 +46,16 @@ const FrontOfficeRoutes = () => {
         <Route path="about" element={<About />} />
         <Route path="community" element={<Community />} />
         <Route path="abonnement" element={<Abonnements />} />
-        <Route path="donation" element={<Donation />} />
+        <Route path="Donation" element={<Donationcomponent />} />
+
+        
+        
         <Route path="signUp" element={<Multistep />} />
         <Route path="signIn" element={<SimpleCard />} />
         {isPatient && <Route path="patient/*" element={<PatientRoutes />} />}
         {isDoctor && <Route path="doctor/*" element={<DoctorRoutes />} />}
-        <Route path="donation/*" element={<DonationRoutes/>} /> 
+       
+         
       </Routes>
     </Suspense>
   );

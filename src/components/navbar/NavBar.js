@@ -311,8 +311,8 @@ const NAV_ITEMS = [
     label: 'community',
     href: '/community',
   },
-  {
-    label: 'donation',
-    href: '/donation',
-  },
+   {
+     label: 'donation',
+     href: '/donation',
+   },
 ];
