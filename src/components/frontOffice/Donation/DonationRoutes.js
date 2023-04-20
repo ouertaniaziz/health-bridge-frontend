@@ -1,18 +1,17 @@
-// import React from 'react';
-//  import Donationscomponent from "./Donationscomponent";
-//  import Donationadd from "./Donationadd";
-//  import Donationmaterial from "./Donationmaterial";
-//  import Donationmedications from "./Donationmedications"
-//  import { Navigate, Route, Routes } from 'react-router-dom';
+import signin from '../Donation/signinsignupdonor/signin';
+import signup from '../Donation/signinsignupdonor/signup';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Donationcomponent from '../Donation/Donationscomponent';
+const DonationRoutes = () => {
+    return (
+      <Routes>
+         <Route element='/Donation' path ={<Donationcomponent/>}></Route>
+        <Route element='/Donation/signup' path ={<signup/>}></Route>
+        <Route element='/Donation/signin' path ={<signin/>}></Route>
 
-//  const DonationRoutes = () => {
-//    return (
-//      <Routes>
-//        <Route path="/" element={<Donationscomponent />} />
-//        <Route path="/register" element={<Donationadd />} />
-//        <Route path="/available-materials" element={<Donationmaterial />} />
-//       <Route path="/available-medications" element={<Donationmedications />} />
-//        <Route path="*" element={<Navigate to="/" />} />
-//      </Routes>
-//    )
-// // }
+      </Routes>
+    );
+  };
+  
+  export default DonationRoutes;
+  

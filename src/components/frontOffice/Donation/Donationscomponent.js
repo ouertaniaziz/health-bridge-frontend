@@ -13,8 +13,11 @@ import {
   Stat,
   StatLabel,
   StatNumber,
-  useColorModeValue,Link,Tag
+  useColorModeValue,Tag
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import signup from '../Donation/signinsignupdonor/signup'
+
 
 import donationimg from '../../../assets/Capturedonation.PNG';
 import { ReactElement } from 'react';
@@ -25,6 +28,7 @@ import { FiServer } from 'react-icons/fi';
 import { GoLocation } from 'react-icons/go';
 
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
+import icon from '../../../assets/icons8-donate-64.png'
 
 const Logo = (props: any) => {
   return (
@@ -126,21 +130,26 @@ export default function CallToActionWithIllustration() {
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}
           color={'#004AAD'}>
-          Meeting scheduling{' '}
+         "Your donation can make a real difference{' '}
           <Text as={'span'} color={'#5CE1E6'}>
-            made easy
+          in someone's life"
           </Text>
         </Heading>
         <Text  fontFamily={'sans-serif'}
             fontWeight={'bold'}
             color={'#000000'}maxW={'3xl'}>
-          Never miss a meeting. Never be late for one too. Keep track of your
-          meetings and receive smart reminders in appropriate times. Read your
-          smart “Daily Agenda” every morning.
+          In times of crisis, every little bit counts. By donating medical and material items,
+           you can make a real difference in the lives of those who are struggling.
+           sending medical supplies to an area in need,
+             or donating clothing and household items to those who have lost everything,
+              Donating not only helps those in need, 
+          but it also provides a sense of purpose and fulfillment. 
+           Even the smallest donation can go a long way in changing someone's life for the better.
         </Text>
         <Stack spacing={6} direction={'row'}>
      
-        <Button as={Link} to="/donation/register" rounded={'full'} px={6} colorScheme={'blue'} bg={'blue.400'} _hover={{ bg: 'blue.500' }}>
+     
+        <Button as={Link} to="/Donation/signup" rounded={'full'} px={6} colorScheme={'blue'} bg={'blue.400'} _hover={{ bg: 'blue.500' }}>
   Register
 </Button>
           <Button rounded={'full'} px={6}>
@@ -153,78 +162,78 @@ export default function CallToActionWithIllustration() {
         </Flex>
         </Flex>
       </Stack>
-      <Box p={5} ml={150}>
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+      <Box p={7} ml={100}>
+      <SimpleGrid columns={{ base: 3, md:2 }} spacing={15}>
+        <Feature color={'#000000'}
+          icon={<Icon  as={FcDonate} w={10} h={10} />}
+          title={'MaterialDonation'}
+          text={
+            'We are currently accepting donations of gently such as blood pressure monitors, nebulizers, and walkers'
+          }
+        />
         <Feature
           icon={<Icon as={FcAssistant} w={10} h={10} />}
-          title={'Lifetime Support'}
+          title={'MedicationDonation'}
           text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+            'Your donation of medical supplies can make a significant difference in the lives of those who are less fortunate.'
           }
         />
-        <Feature
-          icon={<Icon as={FcDonate} w={10} h={10} />}
-          title={'Unlimited Donations'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
-        />
-        <Feature
+        {/* <Feature
           icon={<Icon as={FcInTransit} w={10} h={10} />}
           title={'Instant Delivery'}
           text={
             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
           }
-        />
+        /> */}
       </SimpleGrid>
     </Box>
     <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
     <h1 
   style={{
-    fontWeight: 500,
-    fontSize: { xl: 600 },
-    lineHeight: '110%',
+    fontWeight: '600',
+    fontSize: { base: '3xl', lg: '5xl', xl: '7xl' },
+    lineHeight: '300%',
     color: '#004AAD',
     textAlign: 'center',
     marginBottom: '2rem'
-  }}
->
+  }}>
   What is our company doing?
 </h1>
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }} ml={200}>
-        <StatsCard title={'We serve'} stat={'50,000 people'} />
-        <StatsCard title={'In'} stat={'30 different countries'} />
-        <StatsCard title={'Who speak'} stat={'100 different languages'} />
+
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }} ml={100}>
+        <StatsCard title={'We serve'} stat={'all the peaple in need'} />
+        <StatsCard title={'In'} stat={'all of Tunisia'} />
+        <StatsCard title={'Who suffer '} stat={'from specific diseases'} />
       </SimpleGrid>
     </Box>
-    <Box  ml={200} spacing={{ base: 5, lg: 8 }}
+    <Box  ml={150}  mr={10} mt={50}spacing={{ base: 5, lg: 1 }  }
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}
       >
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           <Stack align={'flex-start'}>
-            <ListHeader>Product</ListHeader>
+            <ListHeader>HealthBridge</ListHeader>
             <Link href={'#'}>Overview</Link>
             <Stack direction={'row'} align={'center'} spacing={2}>
               <Link href={'#'}>Features</Link>
               <Tag
                 size={'sm'}
-                bg={useColorModeValue('green.300', 'green.800')}
+                 bg={useColorModeValue('#004AAD')}
                 ml={2}
                 color={'white'}>
                 New
               </Tag>
             </Stack>
-            <Link href={'#'}>Tutorials</Link>
-            <Link href={'#'}>Pricing</Link>
+            {/* <Link href={'#'}>Tutorials</Link> */}
+            {/* <Link href={'#'}>Pricing</Link> */}
             <Link href={'#'}>Releases</Link>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Company</ListHeader>
             <Link href={'#'}>About Us</Link>
-            <Link href={'#'}>Press</Link>
-            <Link href={'#'}>Careers</Link>
+            {/* <Link href={'#'}>Press</Link>
+            <Link href={'#'}>Careers</Link> */}
             <Link href={'#'}>Contact Us</Link>
             <Link href={'#'}>Partners</Link>
           </Stack>
@@ -233,16 +242,16 @@ export default function CallToActionWithIllustration() {
             <Link href={'#'}>Cookies Policy</Link>
             <Link href={'#'}>Privacy Policy</Link>
             <Link href={'#'}>Terms of Service</Link>
-            <Link href={'#'}>Law Enforcement</Link>
-            <Link href={'#'}>Status</Link>
+            {/* <Link href={'#'}>Law Enforcement</Link>
+            <Link href={'#'}>Status</Link> */}
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Follow Us</ListHeader>
             <Link href={'#'}>Facebook</Link>
             <Link href={'#'}>Twitter</Link>
-            <Link href={'#'}>Dribbble</Link>
+            {/* <Link href={'#'}>Dribbble</Link> */}
             <Link href={'#'}>Instagram</Link>
-            <Link href={'#'}>LinkedIn</Link>
+            {/* <Link href={'#'}>LinkedIn</Link> */}
           </Stack>
         </SimpleGrid>
       </Container>
@@ -263,11 +272,11 @@ export default function CallToActionWithIllustration() {
             flexGrow: 1,
             ml: 8,
           }}>
-          <Logo />
+          {/* <Logo /> */}
         </Flex>
-        <Text pt={6} fontSize={'sm'} textAlign={'center'}>
+        {/* <Text pt={6} fontSize={'sm'} textAlign={'center'}>
           © 2022 Chakra Templates. All rights reserved
-        </Text>
+        </Text> */}
       </Box>
     </Box>
 

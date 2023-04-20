@@ -9,8 +9,7 @@ import Community from './Community/Community';
 import About from './About/About';
 import Donationcomponent from './Donation/Donationscomponent';
 
- import Donationmaterial from "./Donation/Donationmaterial";
- import Donationmedications from "./Donation/Donationmedications"
+
 import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
@@ -37,7 +36,7 @@ const FrontOfficeRoutes = () => {
 
   const PatientRoutes = React.lazy(() => import('./Patient/PatientRoutes'));
   // const DoctorRoutes = React.lazy(() => import('./Doctors/DoctorRoutes'));
-  const DonationRoutes = React.lazy(() => import('./Donation/DonationRoutes'));
+   const DonationRoutes = React.lazy(() => import('./Donation/DonationRoutes'));
   
 
   return (
@@ -50,11 +49,10 @@ const FrontOfficeRoutes = () => {
         <Route path="community" element={<Community />} />
         <Route path="abonnement" element={<Abonnements />} />
         <Route path="Donation" element={<Donationcomponent />} />
-        <Route path="Donation" element={<Donationcomponent />} />
+       
         
 {/* <Route path="/donation/register" element={<Donationadd />} /> */}
-<Route path="/donation/available-materials" element={<Donationmaterial />} />
-<Route path="/donation/available-medications" element={<Donationmedications />} />
+
 
 
 
