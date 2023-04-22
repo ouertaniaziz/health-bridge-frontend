@@ -8,8 +8,8 @@ import Contact from './contact/contact';
 import Community from './Community/Community';
 import About from './About/About';
 import Donationcomponent from './Donation/Donationscomponent';
-import signupdonation from './Donation/signinsignupdonor/signup';
-import signindonation from './Donation/signinsignupdonor/signin';
+import Signupdonation from './Donation/signinsignupdonor/Signup';
+import Signindonation from './Donation/signinsignupdonor/Signin';
 import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
@@ -35,7 +35,7 @@ const FrontOfficeRoutes = () => {
 
   const PatientRoutes = React.lazy(() => import('./Patient/PatientRoutes'));
   // const DoctorRoutes = React.lazy(() => import('./Doctors/DoctorRoutes'));
-  const DonationRoutes = React.lazy(() => import('./Donation/DonationRoutes'));
+
 
   return (
     <Suspense fallback={<div>Loading...</div>}> {/* fixed: add fallback prop to Suspense */}
@@ -46,10 +46,10 @@ const FrontOfficeRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/community" element={<Community />} />
         <Route path="/abonnement" element={<Abonnements />} />
-        <Route path="/donation" element={<Donationcomponent />} />
-        <Route path="/donation/signup" element={<signupdonation />} /> {/* fixed: add closing tag */}
-        <Route path="/donation/signin" element={<signindonation />} /> {/* fixed: add closing tag */}
-        {/* <Route path="/donation/register" element={<Donationadd />} /> */}
+         <Route path="/donation" element={<Donationcomponent />} />
+         <Route path="/donation/signup" element={<Signupdonation/>} /> {/* fixed: add closing tag */}
+        <Route path="/signin" element={<Signindonation />} /> {/* fixed: add closing tag */}
+         
         <Route path="/signup" element={<Multistep />} />
         <Route path="/signin" element={<SimpleCard />} />
         {isPatient && <Route path="/patient/*" element={<PatientRoutes />} />}
