@@ -1,4 +1,4 @@
-import axiosInstance  from '../../../../config/axios';
+import axiosInstance from '../../../../config/axios';
 export const getpatient = usernam => {
   console.log('username:', usernam);
 
@@ -28,7 +28,15 @@ export const updatepatient = patient => {
     });
 };
 
+export const verifycin = form => {
+  return axiosInstance.post('/patient/cin', form).then(response => {
+    console.log(response.data);
+    
+    return response.data.status;
+  });
+};
 const patientservice = {
   getpatient,
+  verifycin,
 };
 export default patientservice;

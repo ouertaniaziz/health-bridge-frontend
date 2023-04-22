@@ -57,9 +57,9 @@ const LinkItemsDoctor: Array<LinkItemProps> = [
 ];
 
 const LinkItemsPatient: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome, route: '' },
-  { name: 'Trending', icon: FiTrendingUp, route: '' },
-  { name: 'Explore', icon: FiCompass, route: '' },
+  { name: 'Home', icon: FiHome, route: '/patient' },
+  { name: 'Profile', icon: FiTrendingUp, route: '/patient/profile' },
+  { name: 'Account', icon: FiCompass, route: '/patient/account' },
   { name: 'Favourites', icon: FiStar, route: '' },
   { name: 'Settings', icon: FiSettings, route: '' },
 ];
@@ -119,7 +119,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          <img src="heathbridgelogo.png" alt="logo" className="imagelogo" />
+          <img
+            src={require('./../healthLogo.png')}
+            alt="logo"
+            className="imagelogo"
+          />
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -214,7 +218,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        <img src="heathbridgelogo.png" alt="logo" className="imagelogo" />
+        <img
+          src={require('./../healthLogo.png')}
+          alt="logo"
+          className="imagelogo"
+        />
       </Text>
 
       <HStack spacing={{ base: '0', md: '6' }}>

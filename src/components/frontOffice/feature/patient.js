@@ -22,11 +22,14 @@ const patientslice = createSlice({
       city: '',
       state: '',
       postal_code: '',
+      cinverified: '',
     },
   },
   reducers: {
     addpatient: (state, action) => {
       state.value = action.payload;
+      console.log('sate', state.value);
+      console.log(state.value.cinverified);
     },
     updatepatientredux: (state, action) => {
       //console.log('payload',action.payload)
@@ -45,11 +48,21 @@ const patientslice = createSlice({
       state.value.phone = payload.phone;
       state.value.city = payload.city;
       state.value.postal_code = payload.postal_code;
-      updatepatient(state.value)
+      updatepatient(state.value);
+    },
+    setverified: (state, action) => {
+      console.log('old',state.value.cinverified)
+      state.value.cinverified = action.payload
+      console.log('state',state.value.cinverified)
+
     },
   },
 });
 
-export const { addpatient, updatepatientredux, updatepatientdetails } =
-  patientslice.actions;
+export const {
+  addpatient,
+  updatepatientredux,
+  updatepatientdetails,
+  setverified,
+} = patientslice.actions;
 export default patientslice.reducer;

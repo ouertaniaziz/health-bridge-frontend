@@ -8,7 +8,7 @@ import patient, { addpatient } from '../feature/patient';
 
 const PatientProfile = () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const mridh = useSelector(state => state.patient.value);
+  //var mridh = useSelector(state => state.patient.value);
   const dispatch = useDispatch();
  
 
