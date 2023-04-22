@@ -111,7 +111,7 @@ export const Form1 = props => {
                     isInvalid={form.errors.LastName && form.touched.LastName}
                   >
                     <FormLabel htmlFor="LastName" fontWeight={'normal'}>
-                      Laste name
+                      Last name
                     </FormLabel>
                     <Input id="Last-name" placeholder="Last Name" {...field} />
                     <FormErrorMessage>{form.errors.LastName}</FormErrorMessage>
