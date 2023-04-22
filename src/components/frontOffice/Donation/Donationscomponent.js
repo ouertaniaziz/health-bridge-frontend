@@ -149,7 +149,7 @@ export default function CallToActionWithIllustration() {
         <Stack spacing={6} direction={'row'}>
      
      
-        <Button as={Link} to="/Donation/signup" rounded={'full'} px={6} colorScheme={'blue'} bg={'blue.400'} _hover={{ bg: 'blue.500' }}>
+        <Button as={Link} to="/donation/signup" rounded={'full'} px={6} colorScheme={'blue'} bg={'blue.400'} _hover={{ bg: 'blue.500' }}>
   Register
 </Button>
           <Button rounded={'full'} px={6}>

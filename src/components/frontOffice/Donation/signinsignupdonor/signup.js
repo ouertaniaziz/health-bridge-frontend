@@ -2,7 +2,7 @@ import react from 'react';
 const signup=()=>{
     return(
         <div>
-            signup function
+            signup function welcome to the sign up 
         </div>
     )
 }

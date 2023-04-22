@@ -8,64 +8,52 @@ import Contact from './contact/contact';
 import Community from './Community/Community';
 import About from './About/About';
 import Donationcomponent from './Donation/Donationscomponent';
-
-
+import signupdonation from './Donation/signinsignupdonor/signup';
+import signindonation from './Donation/signinsignupdonor/signin';
 import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
 
-
-
 const FrontOfficeRoutes = () => {
-  const [isDoctor, setisDoctor] = useState(false);
-  const [isPatient, setisPatient] = useState(false);
+  const [isDoctor, setIsDoctor] = useState(false); // fixed typo: setisDoctor -> setIsDoctor
+  const [isPatient, setIsPatient] = useState(false); // fixed typo: setisPatient -> setIsPatient
   const { user: currentUser } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const logOut = useCallback(() => {
     dispatch(logout());
   }, [dispatch]);
+  
   useEffect(() => {
     if (currentUser) {
       if (currentUser.role.includes('doctor')) {
-        setisDoctor(true);
+        setIsDoctor(true); // fixed typo: setisDoctor -> setIsDoctor
       } else if (currentUser.role.includes('patient')) {
-        setisPatient(true);
+        setIsPatient(true); // fixed typo: setisPatient -> setIsPatient
       }
     }
   }, [currentUser]);
 
   const PatientRoutes = React.lazy(() => import('./Patient/PatientRoutes'));
   // const DoctorRoutes = React.lazy(() => import('./Doctors/DoctorRoutes'));
-   const DonationRoutes = React.lazy(() => import('./Donation/DonationRoutes'));
-  
+  const DonationRoutes = React.lazy(() => import('./Donation/DonationRoutes'));
 
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}> {/* fixed: add fallback prop to Suspense */}
       <Routes>
-        <Route path="home" element={<Home />} />
-        <Route path="blog" element={<BlogsComponent />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="about" element={<About />} />
-        <Route path="community" element={<Community />} />
-        <Route path="abonnement" element={<Abonnements />} />
-        <Route path="Donation" element={<Donationcomponent />} />
-       
-        
-{/* <Route path="/donation/register" element={<Donationadd />} /> */}
-
-
-
-
-
-
-        
-        
-        <Route path="signUp" element={<Multistep />} />
-        <Route path="signIn" element={<SimpleCard />} />
-        {isPatient && <Route path="patient/*" element={<PatientRoutes />} />}
-        {/* {isDoctor && <Route path="doctor/*" element={<DoctorRoutes />} />}
-        */}
-         
+        <Route path="/home" element={<Home />} />
+        <Route path="/blog" element={<BlogsComponent />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/community" element={<Community />} />
+        <Route path="/abonnement" element={<Abonnements />} />
+        <Route path="/donation" element={<Donationcomponent />} />
+        <Route path="/donation/signup" element={<signupdonation />} /> {/* fixed: add closing tag */}
+        <Route path="/donation/signin" element={<signindonation />} /> {/* fixed: add closing tag */}
+        {/* <Route path="/donation/register" element={<Donationadd />} /> */}
+        <Route path="/signup" element={<Multistep />} />
+        <Route path="/signin" element={<SimpleCard />} />
+        {isPatient && <Route path="/patient/*" element={<PatientRoutes />} />}
+        {/* {isDoctor && <Route path="/doctor/*" element={<DoctorRoutes />} />} */}
       </Routes>
     </Suspense>
   );
