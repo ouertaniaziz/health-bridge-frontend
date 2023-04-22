@@ -12,6 +12,7 @@ const UserProvider = ({ children }) => {
     async function getUserInfo() {
       try {
         const usr = await getDoctor();
+        console.log(usr, 'ccrrrr');
         setUser(usr); // ici, user contiendra les informations de l'utilisateur
       } catch (error) {
         console.log(error);

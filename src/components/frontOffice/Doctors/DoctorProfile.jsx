@@ -7,15 +7,19 @@ import { UserContext } from './UserProvider';
 
 const DoctorProfile = () => {
   const user = useContext(UserContext);
-  console.log(user);
   if (Object.keys(user).length === 0) {
     return <Box>wait....</Box>;
   } else {
+    console.log(user.doctor, 'this a doctor');
+
     return (
       <>
-        <HStack>
-          <SocialProfileSimple user={user} />
-          <DoctorInformation user={user} />
+        <HStack
+          flexWrap={{ base: 'wrap', md: 'nowrap' }}
+          flexDirection={{ base: 'column', md: 'row' }}
+        >
+          <SocialProfileSimple user={user.user} doctor={user.doctor} />
+          <DoctorInformation user={user.user} />
         </HStack>
       </>
     );

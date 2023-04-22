@@ -20,47 +20,46 @@ const DoctorInformation = ({ user }, ...Rest) => {
   console.log(user, 'this a user');
 
   return (
-    <Center py={6}>
-      <Box
-        maxW={'320px'}
-        w={'full'}
-        bg={bgColor1}
-        boxShadow={'2xl'}
-        rounded={'lg'}
-        p={6}
-        textAlign={'center'}
-      >
-        <Heading size="md">{`${user.username} `}</Heading>
-        <Text
-          fontSize="sm"
-          color="gray.500"
-          mb={2}
-        >{`Specialité: ${user.speciality}`}</Text>
-        <VStack>
-          <Stack direction="col" spacing={2} align="center">
-            <FaEnvelope />
-            <Text fontSize="sm">{user.email}</Text>
-          </Stack>
-          <Stack direction="col" spacing={2} align="center">
-            <FaPhone />
-            <Text fontSize="sm" ml="2px">
-              {' '}
-              {user.phone}
-            </Text>
-          </Stack>
-          <Stack direction="col" spacing={2} align="center">
-            <FaMapMarkerAlt />
-            {/*     <Text fontSize="sm">{`${user.street}, ${user.state}`}</Text>
-             */}
-            <Text>Esprit, Ariana</Text>{' '}
-          </Stack>
-          <Stack direction="col" spacing={2} align="center">
-            <FaBirthdayCake />
-            <Text fontSize="sm">{user.dateOfBirth}</Text>
-          </Stack>
-        </VStack>
-      </Box>
-    </Center>
+    <Box
+      w={'350px'}
+      h={'250px'}
+      bg={bgColor1}
+      boxShadow={'2xl'}
+      rounded={'lg'}
+      p={6}
+      textAlign={'center'}
+    >
+      <Heading size="md">{`${user.username} `}</Heading>
+      <Text
+        fontSize="sm"
+        color="gray.500"
+        mb={2}
+      >{`Specialité: ${user.speciality}`}</Text>
+      <Stack direction="col" ml={'30px'} mb={'10px'}>
+        <FaEnvelope />
+        <Text fontSize="sm" ml={'30px'}>
+          {' '}
+          {user.email}
+        </Text>
+      </Stack>
+      <Stack direction="col" ml={'30px'} mb={'10px'}>
+        <FaPhone />
+        <Text ml={'30px'} fontSize="sm">
+          {' '}
+          {user.phone}
+        </Text>
+      </Stack>
+      <Stack direction="col" ml={'30px'} mb={'10px'}>
+        <FaMapMarkerAlt />
+        <Text fontSize="sm">{`${user.street}, ${user.state}`}</Text>
+      </Stack>
+      <Stack direction="col" ml={'30px'} mb={'10px'}>
+        <FaBirthdayCake />
+        <Text fontSize="sm" ml={'30px'}>
+          {user.dateOfBirth}
+        </Text>
+      </Stack>
+    </Box>
   );
 };
 

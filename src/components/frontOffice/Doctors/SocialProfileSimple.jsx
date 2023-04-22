@@ -13,16 +13,15 @@ import {
 import { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-export default function SocialProfileSimple({ user }, ...Rest) {
-  const bgColor = useColorModeValue('gray.50', 'gray.800');
+export default function SocialProfileSimple({ user, doctor }, ...Rest) {
   const bgColor1 = useColorModeValue('white', 'gray.900');
   const bgColor2 = useColorModeValue('gray.700', 'gray.900');
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  useEffect(() => {});
   if (Object.keys(user).length === 0) {
     return <Box>wait....</Box>;
   } else {
+    console.log(doctor, 'test125');
+    console.log(user, 'testdsgqsgfg');
     return (
       <Center py={6}>
         <Box
@@ -61,39 +60,8 @@ export default function SocialProfileSimple({ user }, ...Rest) {
             {user.email}
           </Text>
           <Text textAlign={'center'} color={bgColor2} px={3}>
-            lorem ipsum lorem ipsum lorem ipsu mlorem ips umlore m ipsuml orem
-            ipsumlorem i psumlorem ipsumlorem ipsumlorem ipsumlorem
+            {doctor.aboutMe}
           </Text>
-          <Stack mt={8} direction={'row'} spacing={4}>
-            <Button
-              flex={1}
-              fontSize={'sm'}
-              rounded={'full'}
-              _focus={{
-                bg: 'gray.200',
-              }}
-            >
-              Message
-            </Button>
-            <Button
-              flex={1}
-              fontSize={'sm'}
-              rounded={'full'}
-              bg={'blue.400'}
-              color={'white'}
-              boxShadow={
-                '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-              }
-              _hover={{
-                bg: 'blue.500',
-              }}
-              _focus={{
-                bg: 'blue.500',
-              }}
-            >
-              Follow
-            </Button>
-          </Stack>
         </Box>
       </Center>
     );
