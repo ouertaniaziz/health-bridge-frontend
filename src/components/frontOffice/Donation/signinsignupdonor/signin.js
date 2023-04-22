@@ -4,13 +4,16 @@ import {
     FormControl,
     FormLabel,
     Input,
-    Checkbox,
+    InputGroup,
+    HStack,
+    InputRightElement,
     Stack,
-    Link,
     Button,
     Heading,
     Text,
     useColorModeValue,
+    GridItem, Select,
+    
   } from '@chakra-ui/react';
   
   export default function SimpleCard() {
@@ -24,7 +27,7 @@ import {
           <Stack align={'center'}>
             <Heading fontSize={'4xl'}>Sign in to your account</Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
-              and be a part to save someone's life  <Link color={'blue.400'}></Link> ✌️
+              {/* and be a part to save someone's life  <Link color={'blue.400'}></Link> ✌️ */}
             </Text>
           </Stack>
           <Box
@@ -33,6 +36,9 @@ import {
             boxShadow={'lg'}
             p={8}>
             <Stack spacing={4}>
+
+
+                
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
                 <Input type="email" />
@@ -46,9 +52,37 @@ import {
                   direction={{ base: 'column', sm: 'row' }}
                   align={'start'}
                   justify={'space-between'}>
-                  <Checkbox>Remember me</Checkbox>
-                  <Link color={'blue.400'}>Forgot password?</Link>
+                  {/* <Checkbox>Remember me</Checkbox> */}
+                  
                 </Stack>
+                <FormControl as={GridItem} colSpan={[6, 3]}>
+        <FormLabel
+          htmlFor="country"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}>
+          Donation Type
+        </FormLabel>
+        <Select
+        
+        
+          id="country"
+          name="country"
+          autoComplete="donationtype"
+          placeholder="Select donationtype"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md">
+          <option>materials</option>
+          <option>medications</option>
+          
+        </Select>
+      </FormControl> 
                 <Button
                   bg={'blue.400'}
                   color={'white'}

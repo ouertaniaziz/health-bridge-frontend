@@ -34,7 +34,7 @@ const FrontOfficeRoutes = () => {
   }, [currentUser]);
 
   const PatientRoutes = React.lazy(() => import('./Patient/PatientRoutes'));
-  // const DoctorRoutes = React.lazy(() => import('./Doctors/DoctorRoutes'));
+   const DoctorRoutes = React.lazy(() => import('./Doctors/DoctorRoutes'));
 
 
   return (
