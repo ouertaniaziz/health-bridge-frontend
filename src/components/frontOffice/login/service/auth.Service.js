@@ -38,9 +38,24 @@ const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
 };
+export const getDoctor = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  return axiosInstance
+    .post('/doctor/profile', {
+      userId: user.id,
+    })
+    .then(response => {
+      if (response.data) {
+      }
+
+      return response.data;
+    });
+};
 const authService = {
   addUser,
   login,
   logout,
+  getDoctor,
 };
 export default authService;
