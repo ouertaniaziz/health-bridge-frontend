@@ -23,16 +23,7 @@ function Medicalinformations() {
     >
       <Formik>
         <Form>
-          <FormControl>
-            <FormLabel>bloodGroup</FormLabel>
-            <InputGroup>
-              <Input
-                focusBorderColor="brand.blue"
-                type="text"
-                placeholder="apple"
-              />
-            </InputGroup>
-          </FormControl>
+          
           <FormControl>
             <FormLabel>medicalHistory</FormLabel>
             <Input

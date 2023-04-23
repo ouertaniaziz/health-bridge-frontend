@@ -8,7 +8,7 @@ import patient, { addpatient } from '../feature/patient';
 
 const PatientProfile = () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const mridh = useSelector(state => state.patient.value);
+  //var mridh = useSelector(state => state.patient.value);
   const dispatch = useDispatch();
  
 
@@ -17,7 +17,7 @@ const PatientProfile = () => {
       try {
         const response = await getpatient(user.username);
         //let firstname={firstname:response.firstname,lastname:response.lastname}
-        let p = response;
+        let p = response.user;
         dispatch(addpatient(p));
         console.log(p);
        
