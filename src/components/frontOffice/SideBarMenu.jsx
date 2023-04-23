@@ -49,11 +49,11 @@ interface LinkItemProps {
   route: string;
 }
 const LinkItemsDoctor: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome, route: 'home' },
-  { name: 'Appointments', icon: FiCalendar, route: 'appointments' },
-  { name: 'Patients', icon: FiUsers, route: 'patients' },
-  { name: 'Prescriptions', icon: FiFileText, route: 'prescriptions' },
-  { name: 'Settings', icon: FiSettings, route: 'settings' },
+  { name: 'Home', icon: FiHome, route: '/doctor/home' },
+  { name: 'Appointments', icon: FiCalendar, route: '/doctor/appointments' },
+  { name: 'Patients', icon: FiUsers, route: '/doctor/patients' },
+  { name: 'Prescriptions', icon: FiFileText, route: '/doctor/prescriptions' },
+  { name: 'Settings', icon: FiSettings, route: '/doctor/settings' },
 ];
 
 const LinkItemsPatient: Array<LinkItemProps> = [
