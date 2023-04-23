@@ -55,8 +55,8 @@ import {
                   {/* <Checkbox>Remember me</Checkbox> */}
                   
                 </Stack>
-                <FormControl as={GridItem} colSpan={[6, 3]}>
-        <FormLabel
+                {/* <FormControl as={GridItem} colSpan={[6, 3]}>
+         <FormLabel
           htmlFor="country"
           fontSize="sm"
           fontWeight="md"
@@ -82,7 +82,7 @@ import {
           <option>medications</option>
           
         </Select>
-      </FormControl> 
+      </FormControl>   */}
                 <Button
                   bg={'blue.400'}
                   color={'white'}

@@ -10,6 +10,10 @@ import About from './About/About';
 import Donationcomponent from './Donation/Donationscomponent';
 import Signupdonation from './Donation/signinsignupdonor/Signup';
 import Signindonation from './Donation/signinsignupdonor/Signin';
+import MedicationForm from './Donation/MedicationForm';
+import MaterialForm from './Donation/MaterialForm';
+import MedicationList from './Donation/MaterialList';
+import MaterialList from './Donation/MedicationList';
 import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
@@ -48,12 +52,18 @@ const FrontOfficeRoutes = () => {
         <Route path="/abonnement" element={<Abonnements />} />
          <Route path="/donation" element={<Donationcomponent />} />
          <Route path="/donation/signup" element={<Signupdonation/>} /> {/* fixed: add closing tag */}
-        <Route path="/signin" element={<Signindonation />} /> {/* fixed: add closing tag */}
+        <Route path="/donation/signin" element={<Signindonation />} /> {/* fixed: add closing tag */}
+        <Route path="/medicationform" element={<MedicationForm />} />
+         <Route path="/materialform" element={<MaterialForm />} />
+         <Route path="/medicationlist" element={<MedicationList />} />
+         <Route path="/medicationlist" element={< MaterialList/>} />
+      
+
          
         <Route path="/signup" element={<Multistep />} />
         <Route path="/signin" element={<SimpleCard />} />
         {isPatient && <Route path="/patient/*" element={<PatientRoutes />} />}
-        {/* {isDoctor && <Route path="/doctor/*" element={<DoctorRoutes />} />} */}
+         {isDoctor && <Route path="/doctor/*" element={<DoctorRoutes />} />} 
       </Routes>
     </Suspense>
   );
