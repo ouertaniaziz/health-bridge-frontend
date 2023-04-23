@@ -103,6 +103,9 @@ export default function SimpleCard() {
     } else if (currentUser.role.includes('patient')) {
       return <Navigate to="/patient" />;
     }
+    else if (currentUser.role.includes('pharmacist')) {
+      return <Navigate to="/pharmacist" />;
+    }
   }
   return (
     <Flex minH={'100vh'} align={'center'} justify={'center'} bg={color1}>

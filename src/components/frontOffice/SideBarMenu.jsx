@@ -64,6 +64,15 @@ const LinkItemsPatient: Array<LinkItemProps> = [
   { name: 'Settings', icon: FiSettings, route: '' },
 ];
 
+const LinkItemsPharmacist: Array<LinkItemProps> = [
+  { name: 'Home', icon: FiHome, route: '/pharmacist' },
+  { name: 'Profile', icon: FiTrendingUp, route: '/pharmacist/profile' },
+  { name: 'Medication', icon: FiCompass, route: '/pharmacist/medication' },
+  { name: 'Prescription', icon: FiStar, route: '/pharmacist/prescription' },
+  { name: 'Settings', icon: FiSettings, route: '' },
+];
+
+
 export default function SidebarWithHeader({
   children,
 }: {
@@ -139,6 +148,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
               {link.name}
             </NavItem>
           ))
+        : rest.role === 'pharmacist'
+        ? LinkItemsPharmacist.map(link => (
+            <NavItem key={link.name} icon={link.icon} route={link.route}>
+              {link.name}
+            </NavItem>
+          ))
+          
         : null}
     </Box>
   );
