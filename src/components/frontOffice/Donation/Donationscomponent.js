@@ -16,7 +16,7 @@ import {
   useColorModeValue,Tag
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import signup from './signinsignupdonor/Signup'
+import signup from './signinsignupdonor/signup'
 
 
 import donationimg from '../../../assets/Capturedonation.PNG';

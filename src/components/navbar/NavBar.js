@@ -26,11 +26,11 @@ import {
 } from '@chakra-ui/icons';
 import ActiveUserComponents from './activeUserComponents';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
-  const { isLoggedIn } = useSelector(state => state.auth);
-
+const navigate = useNavigate()
   return (
     <Box>
       <Flex
@@ -84,7 +84,7 @@ export default function WithSubnavigation() {
               fontSize={'sm'}
               fontWeight={400}
               variant={'link'}
-              href={'signIn'}
+              onClick={()=>{navigate('/signIn')}}
             >
               Sign In
             </Button>
@@ -95,7 +95,7 @@ export default function WithSubnavigation() {
               fontWeight={600}
               color={'white'}
               bg={'#367DDD'}
-              href={'signUp'}
+              onClick={()=>{navigate('/signUp')}}
               _hover={{
                 bg: '#367DDD',
               }}

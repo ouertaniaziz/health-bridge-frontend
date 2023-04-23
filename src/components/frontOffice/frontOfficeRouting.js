@@ -6,8 +6,8 @@ import Contact from './contact/contact';
 import Community from './Community/Community';
 import About from './About/About';
 import Donationcomponent from './Donation/Donationscomponent';
-import Signupdonation from './Donation/signinsignupdonor/Signup';
-import Signindonation from './Donation/signinsignupdonor/Signin';
+import Signupdonation from './Donation/signinsignupdonor/signup';
+import Signindonation from './Donation/signinsignupdonor/signin';
 import MedicationForm from './Donation/MedicationForm';
 import MaterialForm from './Donation/MaterialForm';
 import MedicationList from './Donation/MaterialList';
@@ -38,9 +38,6 @@ const FrontOfficeRoutes = () => {
          <Route path="/medicationlist" element={<MedicationList />} />
          <Route path="/medicationlist" element={< MaterialList/>} />
          <Route path="/verify/:token" element={< Emailverificiation/>} />
-
-
-         
         <Route path="/signup" element={<Multistep />} />
         <Route path="/signin" element={<SimpleCard />} />
       </Routes>
