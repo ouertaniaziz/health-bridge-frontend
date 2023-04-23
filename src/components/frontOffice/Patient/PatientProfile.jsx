@@ -17,7 +17,7 @@ const PatientProfile = () => {
       try {
         const response = await getpatient(user.username);
         //let firstname={firstname:response.firstname,lastname:response.lastname}
-        let p = response;
+        let p = response.user;
         dispatch(addpatient(p));
         console.log(p);
        

@@ -18,9 +18,24 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  Center,
+  Avatar,
+  Heading,
+  Divider,
+  Text,
+  VStack,
+  Flex,
+  HStack,
+  Stack,
+  IconButton,
+  Icon,
+  Card,
+  Spacer,
+  CardBody,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { GoVerified } from 'react-icons/go';
+import { FaEdit } from 'react-icons/fa';
 import { verifycin } from './service/patientservice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setverified } from '../feature/patient';
@@ -54,8 +69,9 @@ const PatientDashboard = () => {
     if (status === true) {
       user.cinverified = true;
       localStorage.setItem('user', JSON.stringify(user));
+      seterr(false);
     } else {
-      seterr(true)
+      seterr(true);
     }
     setLoading(false);
   };
@@ -135,6 +151,114 @@ const PatientDashboard = () => {
           </ModalFooter>
         </ModalContent>
       </Modal>
+
+      <Box
+        //maxW="xl"
+        mx="auto"
+        mt="8"
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+      >
+        <Card>
+          <Flex direction={{ base: 'column', md: 'row' }}>
+            <Box p="6">
+              <Card borderRadius="xl">
+                <Avatar
+                  size="2xl"
+                  name="John Doe"
+                  src="https://bit.ly/broken-link"
+                />
+                <CardBody>
+                  <Heading size="md" color="gray.800">
+                    John Doe
+                  </Heading>
+                  <Text color="gray.500" fontSize="lg">
+                    Phone: (123) 456-7890
+                  </Text>
+                  <Text color="gray.500" fontSize="lg">
+                    Email: john.doe@example.com
+                  </Text>
+                  <Spacer mt={4} />
+                  <Button
+                    leftIcon={<FaEdit />}
+                    colorScheme="teal"
+                    variant="outline"
+                  >
+                    Edit Profile
+                  </Button>
+                </CardBody>
+              </Card>
+            </Box>
+            <Spacer />
+            <Box p="6" flex="2">
+              <CardBody>
+                <Stack spacing="4">
+                  <Box>
+                    <Text fontWeight="semibold" color="gray.800" fontSize="lg">
+                      Address:
+                    </Text>
+                    <Text color="gray.500" fontSize="lg">
+                      123 Main St, Anytown USA
+                    </Text>
+                  </Box>
+                  <Box>
+                    <Text fontWeight="semibold" color="gray.800" fontSize="lg">
+                      Joined:
+                    </Text>
+                    <Text color="gray.500" fontSize="lg">
+                      01/01/2022
+                    </Text>
+                  </Box>
+                  <Divider />
+                  <Box>
+                    <Text fontWeight="semibold" color="gray.800" fontSize="lg">
+                      About me:
+                    </Text>
+                    <Text color="gray.500" fontSize="lg">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Sed efficitur enim et nisi laoreet bibendum.
+                    </Text>
+                  </Box>
+                  <Box>
+                    <Text fontWeight="semibold" color="gray.800" fontSize="lg">
+                      Skills:
+                    </Text>
+                    <HStack spacing="2">
+                      <Button size="sm" variant="outline">
+                        React
+                      </Button>
+                      <Button size="sm" variant="outline">
+                        JavaScript
+                      </Button>
+                      <Button size="sm" variant="outline">
+                        CSS
+                      </Button>
+                    </HStack>
+                  </Box>
+                  <Divider />
+                  <Box>
+                    <Text fontWeight="semibold" color="gray.800" fontSize="lg">
+                      Interests:
+                    </Text>
+                    <HStack spacing="2">
+                      <Button size="sm" variant="outline">
+                        Hiking
+                      </Button>
+                      <Button size="sm" variant="outline">
+                        Cooking
+                      </Button>
+                      <Button size="sm" variant="outline">
+                        Gardening
+                      </Button>
+                    </HStack>
+                  </Box>
+                </Stack>
+              </CardBody>
+            </Box>
+          </Flex>
+        </Card>
+      </Box>
     </>
   );
 };
