@@ -1,8 +1,6 @@
-import React, { Suspense, useState, useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Suspense } from 'react';
 import { logout } from './feature/signIn';
 import { Route, Routes } from 'react-router-dom';
-import BlogsComponent from './Blogs/blog';
 import Home from './HomePage/Home';
 import Contact from './contact/contact';
 import Community from './Community/Community';
@@ -17,35 +15,17 @@ import MaterialList from './Donation/MedicationList';
 import Abonnements from './Abonnements/Abonnement';
 import SimpleCard from './login/signIn/signInForm';
 import Multistep from './login/signUp/signUpForm';
+import { Emailverificiation } from './Emailverification/Emailverificiation';
 
 const FrontOfficeRoutes = () => {
-  const [isDoctor, setIsDoctor] = useState(false); // fixed typo: setisDoctor -> setIsDoctor
-  const [isPatient, setIsPatient] = useState(false); // fixed typo: setisPatient -> setIsPatient
-  const { user: currentUser } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
-  const logOut = useCallback(() => {
-    dispatch(logout());
-  }, [dispatch]);
-  
-  useEffect(() => {
-    if (currentUser) {
-      if (currentUser.role.includes('doctor')) {
-        setIsDoctor(true); // fixed typo: setisDoctor -> setIsDoctor
-      } else if (currentUser.role.includes('patient')) {
-        setIsPatient(true); // fixed typo: setisPatient -> setIsPatient
-      }
-    }
-  }, [currentUser]);
 
-  const PatientRoutes = React.lazy(() => import('./Patient/PatientRoutes'));
-   const DoctorRoutes = React.lazy(() => import('./Doctors/DoctorRoutes'));
 
 
   return (
     <Suspense fallback={<div>Loading...</div>}> {/* fixed: add fallback prop to Suspense */}
       <Routes>
+
         <Route path="/home" element={<Home />} />
-        <Route path="/blog" element={<BlogsComponent />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/community" element={<Community />} />
@@ -57,14 +37,14 @@ const FrontOfficeRoutes = () => {
          <Route path="/materialform" element={<MaterialForm />} />
          <Route path="/medicationlist" element={<MedicationList />} />
          <Route path="/medicationlist" element={< MaterialList/>} />
-      
+         <Route path="/verify/:token" element={< Emailverificiation/>} />
+
 
          
         <Route path="/signup" element={<Multistep />} />
         <Route path="/signin" element={<SimpleCard />} />
-        {isPatient && <Route path="/patient/*" element={<PatientRoutes />} />}
-         {isDoctor && <Route path="/doctor/*" element={<DoctorRoutes />} />} 
       </Routes>
+
     </Suspense>
   );
 };

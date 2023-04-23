@@ -5,8 +5,9 @@ import PatientProfile from './PatientProfile';
 const PatientRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<PatientProfile />} />
-      <Route path="/dashboard" element={<PatientDashboard />} />
+      <Route path="/" element={<PatientDashboard />} />
+      <Route path="account" element={<PatientProfile />} />
+      <Route path="profile" element={<PatientDashboard />} />
     </Routes>
   );
 };

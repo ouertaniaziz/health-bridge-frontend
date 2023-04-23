@@ -54,6 +54,12 @@ export const formSignUpSlice = createSlice({
       state.value.symptoms = action.payload.symptoms;
       state.value.testResults = action.payload.testResults;
     },
+    setFormpharmacist: (state, action) => {
+      state.value.dateOfBirth = action.payload.dateOfBirth;
+      state.value.sex = action.payload.sex;
+      state.value.pharmacie = action.payload.pharmacie;
+      state.value.insuranceInformation = action.payload.insuranceInformation;
+    },
     setLastName: (state, action) => {
       state.value.LastName = action.payload.LastName;
     },
@@ -81,12 +87,36 @@ export const formSignUpSlice = createSlice({
     setPostalCode: (state, action) => {
       state.value.postal_code = action.payload.postal_code;
     },
+    setProfile: (state, action) => {
+      state.value.name = action.payload.name;
+      state.value.LastName = action.payload.LastName;
+      state.value.email = action.payload.email;
+      state.value.phone = action.payload.phone;
+      state.value.role = action.payload.role;
+      state.value.username = action.payload.username;
+      state.value.StreetAddress = action.payload.StreetAddress;
+      state.value.city = action.payload.city;
+      state.value.state = action.payload.state;
+      state.value.postal_code = action.payload.postal_code;
+      state.value.dateOfBirth = action.payload.dateOfBirth;
+      state.value.bloodGroup = action.payload.bloodGroup;
+      state.value.medicalHistory = action.payload.medicalHistory;
+      state.value.medications = action.payload.medications;
+      state.value.insuranceInformation = action.payload.insuranceInformation;
+      state.value.symptoms = action.payload.symptoms;
+      state.value.testResults = action.payload.testResults;
+      state.value.dateOfBirth = action.payload.dateOfBirth;
+      state.value.sex = action.payload.sex;
+      state.value.pharmacie = action.payload.pharmacie;
+      state.value.insuranceInformation = action.payload.insuranceInformation;
+    },
   },
 });
 export const {
   setFormOne,
   setFormtwo,
   setFormpatient,
+  setFormpharmacist,
   setLastName,
   setEmail,
   setPhone,
@@ -96,5 +126,6 @@ export const {
   setCity,
   setState,
   setPostalCode,
+  setProfile,
 } = formSignUpSlice.actions;
-export default formSignUpSlice.reducer;
+export default formSignUpSlice;

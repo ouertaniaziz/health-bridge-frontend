@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -40,6 +40,7 @@ export default function PatienForm(props) {
   const state = useSelector(state => state.formSignUp.value);
   const handleBack = () => props.sendStep(-1);
   const dispatch = useDispatch();
+  const [result, setResult] = useState(null);
 
   return (
     <Box maxW="md" mx="auto">
@@ -67,7 +68,8 @@ export default function PatienForm(props) {
               testResults: values.testResults,
             })
           );
-          addUser(state);
+          setResult(addUser(state));
+          console.log(result);
         }}
         validationSchema={validationSchema}
       >
@@ -91,10 +93,8 @@ export default function PatienForm(props) {
                   <FormControl isInvalid={form.errors.sex}>
                     <FormLabel htmlFor="sex">Sex</FormLabel>
                     <Select id="sex" {...field}>
-                      <option value="">Select</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="other">Other</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
                     </Select>
                     <FormErrorMessage>{form.errors.sex}</FormErrorMessage>
                   </FormControl>
@@ -232,13 +232,23 @@ export default function PatienForm(props) {
                   colorScheme="red"
                   variant="solid"
                   onClick={() => {
-                    toast({
-                      title: 'Account created.',
-                      description: "We've created your account for you.",
-                      status: 'success',
-                      duration: 3000,
-                      isClosable: true,
-                    });
+                    if (result.status === 201) {
+                      toast({
+                        title: 'Account created.',
+                        description: "We've created your account for you.",
+                        status: 'success',
+                        duration: 5000,
+                        isClosable: true,
+                      });
+                    } else {
+                      toast({
+                        title: 'failed.',
+                        description: 'nope.',
+                        status: 'error',
+                        duration: 5000,
+                        isClosable: true,
+                      });
+                    }
                   }}
                   type="submit"
                 >

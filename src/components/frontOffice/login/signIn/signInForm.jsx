@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { login } from '../../feature/signIn';
+import { setProfile } from '../../feature/signUp';
+
+import { getDoctor } from '../service/auth.Service';
 import { clearMessage } from '../../feature/message';
 import {
   Flex,
@@ -18,41 +21,43 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  FormErrorMessage,
+  useToast,
 } from '@chakra-ui/react';
-import ReCAPTCHA from "react-google-recaptcha";
-
-
-
-function onChange(value) {
-  console.log("Captcha value:", value);
-}
-
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function SimpleCard() {
-  function handlecallbackresponse(response){
+  const [captchaError, setcaptchaError] = useState(false);
+  const toast = useToast();
+
+  function handlecallbackresponse(response) {
     // console.log("encoded jwt id token:"+response.credential);
   }
 
-  useEffect(()=>{
+  function onChange(value) {
+    console.log('Captcha value:', value);
+    if (value) {
+      setcaptchaError(true);
+    }
+  }
+  useEffect(() => {
     /*global google */
     google.accounts.id.initialize({
-      client_id:"102321854344-7hqudjfshv1gjdkcuq367213a13cpctt.apps.googleusercontent.com",
-      callback:handlecallbackresponse
+      client_id:
+        '102321854344-7hqudjfshv1gjdkcuq367213a13cpctt.apps.googleusercontent.com',
+      callback: handlecallbackresponse,
     });
-    google.accounts.id.renderButton(
-      document.getElementById("signindiv"),{
-        theme:"outline",size:"large"
-      }
-    );
-  },[]);
+    google.accounts.id.renderButton(document.getElementById('signindiv'), {
+      theme: 'outline',
+      size: 'large',
+    });
+  }, []);
   let color1 = useColorModeValue('gray.50', 'gray.800');
   let color2 = useColorModeValue('white', 'gray.700');
   let navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector(state => state.auth);
-  const { message } = useSelector(state => state.message);
   const dispatch = useDispatch();
   const { user: currentUser } = useSelector(state => state.auth);
 
@@ -72,20 +77,27 @@ export default function SimpleCard() {
 
   const handleLogin = formValue => {
     const { username, password } = formValue;
-    console.log(username, password);
     setLoading(true);
-
     dispatch(login({ username, password }))
       .unwrap()
       .then(res => {
-        console.log(res.user);
+        toast({
+          title: ` bonne navigation `,
+          status: 'success',
+          isClosable: true,
+        });
       })
       .catch(() => {
-        console.log('first');
         setLoading(false);
+        toast({
+          title: ` verifer votre username et mot de passe `,
+          status: 'error',
+          isClosable: true,
+        });
       });
   };
   if (currentUser) {
+    console.log(currentUser);
     if (currentUser.role.includes('doctor')) {
       return <Navigate to="/doctor" />;
     } else if (currentUser.role.includes('patient')) {
@@ -111,17 +123,23 @@ export default function SimpleCard() {
               <Form>
                 <Field name="username">
                   {({ field, form }) => (
-                    <FormControl id="username">
+                    <FormControl id="username" isInvalid={form.errors.username}>
                       <FormLabel>Email address</FormLabel>
                       <Input id="username" {...field} />
+                      <FormErrorMessage>
+                        {form.errors.username}
+                      </FormErrorMessage>
                     </FormControl>
                   )}
                 </Field>
                 <Field name="password">
                   {({ field, form }) => (
-                    <FormControl id="password">
+                    <FormControl id="password" isInvalid={form.errors.password}>
                       <FormLabel>Password</FormLabel>
                       <Input type="password" {...field} />
+                      <FormErrorMessage>
+                        {form.errors.password}
+                      </FormErrorMessage>
                     </FormControl>
                   )}
                 </Field>
@@ -135,25 +153,36 @@ export default function SimpleCard() {
                     <Link color={'blue.400'}>Forgot password?</Link>
                   </Stack>
                   <ReCAPTCHA
-
-sitekey="6LeCPvUkAAAAAP7wfhR8Ku8YHgUXdt2Pc1hnAJMO"
-
-onChange={onChange}
-
-
- />
- <div className="app"><div id="signindiv"> </div></div>
-
-                  <Button
-                    bg={'blue.400'}
-                    color={'white'}
-                    _hover={{
-                      bg: 'blue.500',
-                    }}
-                    type="submit"
-                  >
-                    Sign in
-                  </Button>
+                    sitekey="6LeCPvUkAAAAAP7wfhR8Ku8YHgUXdt2Pc1hnAJMO"
+                    onChange={onChange}
+                  />
+                  <div className="app">
+                    <div id="signindiv"> </div>
+                  </div>
+                  {captchaError ? (
+                    <Button
+                      bg={'blue.400'}
+                      color={'white'}
+                      _hover={{
+                        bg: 'blue.500',
+                      }}
+                      type="submit"
+                    >
+                      Sign in
+                    </Button>
+                  ) : (
+                    <Button
+                      bg={'blue.400'}
+                      color={'white'}
+                      _hover={{
+                        bg: 'blue.500',
+                      }}
+                      type="submit"
+                      isDisabled={true}
+                    >
+                      Sign in
+                    </Button>
+                  )}
                 </Stack>
               </Form>
             </Formik>
