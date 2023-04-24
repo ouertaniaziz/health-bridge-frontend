@@ -39,6 +39,7 @@ import { FaEdit } from 'react-icons/fa';
 import { verifycin } from './service/patientservice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setverified } from '../feature/patient';
+import SendNotification from './SendNotification';
 
 const PatientDashboard = () => {
   var donee = useSelector(state => state.patient.value.cinverified);
@@ -259,6 +260,7 @@ const PatientDashboard = () => {
           </Flex>
         </Card>
       </Box>
+      <SendNotification />
     </>
   );
 };

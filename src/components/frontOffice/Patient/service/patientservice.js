@@ -20,7 +20,7 @@ export const updatepatient = user => {
     })
     .then(response => {
       //const status = response.status;
-      console.log('response',response.data);
+      console.log('response', response.data);
 
       // if (status === 200) {
       //   console.log(response.data);
@@ -40,6 +40,24 @@ export const verifycin = form => {
 
     return response.data.status;
   });
+};
+export const addAppoiment = data => {
+  console.log(data);
+  return axiosInstance.post('/appointments/add', data).then(response => {
+    console.log(response.data);
+
+    return response.data.status;
+  });
+};
+export const getAllDoctors = () => {
+  try {
+    const response = axiosInstance.get('/doctor/all');
+    console.log(response.data);
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 const patientservice = {
   getpatient,
