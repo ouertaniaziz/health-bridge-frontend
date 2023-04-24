@@ -59,11 +59,8 @@ const patientslice = createSlice({
 
       // });
       let value
-      const status = updatepatient(state.value);
-       status.then(res => {
-       value=res;
-        console.log('s', res);
-      });
+       updatepatient(state.value);
+      
         console.log(value)
       //console.log(status)
     },

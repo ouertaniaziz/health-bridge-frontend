@@ -38,6 +38,8 @@ const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
 };
+
+//getDoctor
 export const getDoctor = () => {
   const user = JSON.parse(localStorage.getItem('user'));
 
@@ -52,10 +54,28 @@ export const getDoctor = () => {
       return response.data;
     });
 };
+
+
+// getPharmacist
+export const getPharmacist = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  return axiosInstance
+    .post('/pharmacist/profile', {
+      userId: user.id,
+    })
+    .then(response => {
+      if (response.data) {
+      }
+
+      return response.data;
+    });
+};
 const authService = {
   addUser,
   login,
   logout,
   getDoctor,
+  getPharmacist,
 };
 export default authService;

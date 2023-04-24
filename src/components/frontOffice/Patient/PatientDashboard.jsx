@@ -43,8 +43,10 @@ import { FaEdit } from 'react-icons/fa';
 import { getpatient, verifycin } from './service/patientservice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setverified } from '../feature/patient';
+import SendNotification from './SendNotification';
 import './patient.css';
-const PatientDashboard = props => {
+
+const PatientDashboard = () => {
   var donee = useSelector(state => state.patient.value.cinverified);
   // var patient = useSelector(state => state.patient.value);
   const [patient, setpatient] = useState();

@@ -10,6 +10,7 @@ const RoutesPage = () => {
   const { isLoggedIn } = useSelector(state => state.auth);
   const [isDoctor, setisDoctor] = useState(false);
   const [isPatient, setisPatient] = useState(false);
+  const [isPharmacist, setisPharmacist] = useState(false);
   const { user: currentUser } = useSelector(state => state.auth);
 
   useEffect(() => {
@@ -20,6 +21,9 @@ const RoutesPage = () => {
       } else if (currentUser.role.includes('patient')) {
         console.log('patient');
         setisPatient(true);
+      } else if (currentUser.role.includes('pharmacist')) {
+        console.log('pharmacist');
+        setisPharmacist(true);
       }
     }
   }, [currentUser]);
@@ -30,6 +34,10 @@ const RoutesPage = () => {
   const DoctorRoutes = React.lazy(() =>
     import('../components/frontOffice/Doctors/DoctorRoutes')
   );
+  const PharmacistRoutes = React.lazy(() =>
+    import('../components/frontOffice/Pharmacist/PharmacistRoutes')
+  );
+
   return (
     <>
       {' '}
@@ -43,6 +51,7 @@ const RoutesPage = () => {
                 <Route path="patient/*" element={<PatientRoutes />} />
               )}
               {isDoctor && <Route path="doctor/*" element={<DoctorRoutes />} />}
+              {isPharmacist && <Route path="pharmacist/*" element={<PharmacistRoutes />} />}
             </Routes>
           </Suspense>
         </SidebarWithHeader>

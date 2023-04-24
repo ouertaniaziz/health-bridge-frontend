@@ -36,7 +36,7 @@ export default function SocialProfileSimple({ user, doctor }, ...Rest) {
           <Avatar
             size={'xl'}
             src={
-              'https://ik.imagekit.io/r5nhyj1e1/Doctor-PNG-Image.png?updatedAt=1682301245002'
+              'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
             }
             alt={'Avatar Alt'}
             mb={4}
@@ -59,9 +59,9 @@ export default function SocialProfileSimple({ user, doctor }, ...Rest) {
           <Text fontWeight={600} color={'gray.500'} mb={4}>
             {user.email}
           </Text>
-          <Text textAlign={'center'} color={bgColor2} px={3}>
-            {doctor.aboutMe}
-          </Text>
+          {/* <Text textAlign={'center'} color={bgColor2} px={3}>
+            {pharmacist.aboutMe}
+          </Text> */}
         </Box>
       </Center>
     );
