@@ -53,6 +53,7 @@ const LinkItemsDoctor: Array<LinkItemProps> = [
   { name: 'Appointments', icon: FiCalendar, route: 'appointments' },
   { name: 'Patients', icon: FiUsers, route: 'patients' },
   { name: 'Prescriptions', icon: FiFileText, route: 'prescriptions' },
+  { name: 'Blogs', icon: FiCalendar, route: 'blog' },
   { name: 'Settings', icon: FiSettings, route: 'settings' },
 ];
 
@@ -61,6 +62,7 @@ const LinkItemsPatient: Array<LinkItemProps> = [
   { name: 'Trending', icon: FiTrendingUp, route: '' },
   { name: 'Explore', icon: FiCompass, route: '' },
   { name: 'Favourites', icon: FiStar, route: '' },
+  { name: 'Blogs', icon: FiCalendar, route: 'blog' },
   { name: 'Settings', icon: FiSettings, route: '' },
 ];
 
