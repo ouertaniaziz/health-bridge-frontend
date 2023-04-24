@@ -8,6 +8,7 @@ const HomePage = React.lazy(() => import('./DoctorHome'));
 const AddPrespiction = React.lazy(() =>
   import('./prescription/AddPrespiction')
 );
+const ApoimentDoctor = React.lazy(() => import('./AppointmentsList'));
 const DoctorRoutes = () => {
   return (
     <UserProvider>
@@ -15,7 +16,8 @@ const DoctorRoutes = () => {
         <Route path="/" element={<DoctorProfile />} />
         <Route path="/dashboard" element={<DoctorDashboard />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/addPrespiction" element={<AddPrespiction />} />
+        <Route path="/addPrespiction/:id" element={<AddPrespiction />} />
+        <Route path="/appointments" element={<ApoimentDoctor />} />
       </Routes>
     </UserProvider>
   );

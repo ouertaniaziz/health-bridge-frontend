@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #ddd;
+  font-weight: bolder;
+}
+
+th {
+  background-color: #509aea;
+  font-weight: bold;
+  color: #000;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+.appointment-row.past {
+  background-color: #f0be39;
+}
+
+.appointment-row.future {
+  background-color: #27958f;
+}

@@ -73,7 +73,7 @@ useEffect(()=>{
         </Stack>
       </Flex>
       <Flex flex={1} pr={{md :'100px'}} boxSize={{base:'50hv',md:'60vh',lg:'75vh'}}>
-        <Image src='mail.png'></Image>
+        <Image src={require('./mail.png')}></Image>
        
         
       </Flex>
