@@ -83,7 +83,7 @@ const navigate = useNavigate()
               color={'#004AAD'}
               fontSize={'sm'}
               fontWeight={400}
-              variant={'link'}
+              // variant={'link'}
               onClick={()=>{navigate('/signIn')}}
             >
               Sign In

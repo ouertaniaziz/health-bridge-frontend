@@ -1,25 +1,30 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import PharmacistDashboard from './PharmacistDashbord';
+import PharmacistDashbord from './PharmacistDashbord';
 import PharmacistProfile from './PharmacistProfile';
-import PharacistProvider  from './UserPharmacist';
-const PharmacistHome= React.lazy(() => import('./PharmacistHome'));
+import PharmacistProvider  from './UserPharmacist';
+import Medication from './Medications';
 
+const PharmacistHome= React.lazy(() => import('./PharmacistHome'));
 
 const PharmacistRoutes = () => {
   return (
 
-    <PharacistProvider>
+    <PharmacistProvider>
       <Routes>
         <Route path="/" element= {<PharmacistProfile />} />
-        <Route path="/dashboard" element={<PharmacistDashboard />} />
+        <Route path="/dashbord" element={<PharmacistDashbord />} />
         <Route path="/Home" element={< PharmacistHome />} />
+        <Route path="/medication" element={<Medication/>} />
         {/* <Route path="/GetPrespiction" element={<GetPrespiction />} /> */}
       </Routes>
-    </PharacistProvider>
+    </PharmacistProvider>
   );
 };
 
 export default PharmacistRoutes;
+
+
+
 
 

@@ -19,6 +19,7 @@ import {
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { MdLocalShipping } from 'react-icons/md';
   
+  
   export default function Simple() {
     return (
       <Container maxW={'7xl'}>
@@ -30,9 +31,8 @@ import {
             <Image
               rounded={'md'}
               alt={'product image'}
-              src={
-                'https://images.unsplash.com/photo-1596516109370-29001ec8ec36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODE1MDl8MHwxfGFsbHx8fHx8fHx8fDE2Mzg5MzY2MzE&ixlib=rb-1.2.1&q=80&w=1080'
-              }
+              src={ require('../../../assets/med-removebg-preview.png')}
+              className="image"
               fit={'cover'}
               align={'center'}
               w={'100%'}
@@ -45,13 +45,13 @@ import {
                 lineHeight={1.1}
                 fontWeight={600}
                 fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-                Automatic Watch
+                Medication name : Lamictal
               </Heading>
               <Text
                 color={useColorModeValue('gray.900', 'gray.400')}
                 fontWeight={300}
                 fontSize={'2xl'}>
-                $350.00 USD
+                100mg
               </Text>
             </Box>
   
@@ -81,46 +81,46 @@ import {
               <Box>
                 <Text
                   fontSize={{ base: '16px', lg: '18px' }}
-                  color={useColorModeValue('yellow.500', 'yellow.300')}
+                  color={useColorModeValue('blue.500', 'blue.300')}
                   fontWeight={'500'}
                   textTransform={'uppercase'}
                   mb={'4'}>
-                  Features
+                  price : 150 DT 
                 </Text>
   
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                   <List spacing={2}>
-                    <ListItem>Chronograph</ListItem>
-                    <ListItem>Master Chronometer Certified</ListItem>{' '}
-                    <ListItem>Tachymeter</ListItem>
+                    <ListItem>Quantity</ListItem>
+                    <ListItem>exp date </ListItem>{' '}
+                    <ListItem>creaction date</ListItem>
                   </List>
                   <List spacing={2}>
-                    <ListItem>Anti‑magnetic</ListItem>
-                    <ListItem>Chronometer</ListItem>
-                    <ListItem>Small seconds</ListItem>
+                    <ListItem>100mg</ListItem>
+                    <ListItem>12/06/2024</ListItem>
+                    <ListItem>12/05/2022</ListItem>
                   </List>
                 </SimpleGrid>
               </Box>
               <Box>
                 <Text
                   fontSize={{ base: '16px', lg: '18px' }}
-                  color={useColorModeValue('yellow.500', 'yellow.300')}
+                  color={useColorModeValue('blue.500', 'blue.300')}
                   fontWeight={'500'}
                   textTransform={'uppercase'}
                   mb={'4'}>
-                  Product Details
+                  Medication Details
                 </Text>
   
                 <List spacing={2}>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
-                      Between lugs:
+                      Between luches:
                     </Text>{' '}
-                    20 mm
+                    2 days 
                   </ListItem>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
-                      Bracelet:
+                      medication type:
                     </Text>{' '}
                     leather strap
                   </ListItem>
@@ -132,16 +132,16 @@ import {
                   </ListItem>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
-                      Case diameter:
+                      Case :
                     </Text>{' '}
-                    42 mm
+                    cancer
                   </ListItem>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
-                      Dial color:
+                        Dial:
                     </Text>{' '}
-                    Black
-                  </ListItem>
+                    1 pill per day
+                      </ListItem>
                   <ListItem>
                     <Text as={'span'} fontWeight={'bold'}>
                       Crystal:
@@ -149,12 +149,7 @@ import {
                     Domed, scratch‑resistant sapphire crystal with anti‑reflective
                     treatment inside
                   </ListItem>
-                  <ListItem>
-                    <Text as={'span'} fontWeight={'bold'}>
-                      Water resistance:
-                    </Text>{' '}
-                    5 bar (50 metres / 167 feet){' '}
-                  </ListItem>
+                 
                 </List>
               </Box>
             </Stack>
@@ -165,8 +160,8 @@ import {
               mt={8}
               size={'lg'}
               py={'7'}
-              bg={useColorModeValue('gray.900', 'gray.50')}
-              color={useColorModeValue('white', 'gray.900')}
+              bg={useColorModeValue('blue.900', 'blue.50')}
+              color={useColorModeValue('white', 'blue.900')}
               textTransform={'uppercase'}
               _hover={{
                 transform: 'translateY(2px)',

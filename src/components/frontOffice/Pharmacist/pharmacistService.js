@@ -8,15 +8,24 @@ export const getMedicationById = id => {
   });
 };  
 
-export const GetPrespictionByPatientId = id => {
-    return axiosInstance.get(`/prescriptions/patient/${id}`).then(res => {
+
+export const GetPrespictionById = id => {
+    return axiosInstance.get(`/prescriptions/${id}`).then(res => {
         console.log(res);
         return res;
     });
     };
-
+    export const getMedication = () => {
+      return axiosInstance.get('/medications').then(res => {
+        console.log("MEDICATION",res);
+        return res;
+      });
+    };
+    
     const pharmacistservice = {
-        GetPrespictionByPatientId,
+        GetPrespictionById,
         getMedicationById,
+        getMedication
+        
       };
       export default pharmacistservice;

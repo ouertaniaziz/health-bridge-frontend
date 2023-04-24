@@ -65,8 +65,8 @@ const LinkItemsPatient: Array<LinkItemProps> = [
 ];
 
 const LinkItemsPharmacist: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome, route: '/pharmacist' },
-  { name: 'Profile', icon: FiTrendingUp, route: '/pharmacist/profile' },
+  { name: 'Profile', icon: FiHome, route: '/pharmacist' },
+  { name: 'dashbord', icon: FiTrendingUp, route: '/pharmacist/dashbord' },
   { name: 'Medication', icon: FiCompass, route: '/pharmacist/medication' },
   { name: 'Prescription', icon: FiStar, route: '/pharmacist/prescription' },
   { name: 'Settings', icon: FiSettings, route: '' },
@@ -284,7 +284,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             >
               <MenuItem>Profile</MenuItem>
               <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
+              <MenuItem>Help</MenuItem>
               <MenuDivider />
               <MenuItem
                 onClick={() => {
