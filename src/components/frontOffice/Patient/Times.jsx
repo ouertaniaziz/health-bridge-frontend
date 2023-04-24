@@ -35,9 +35,6 @@ function Times(props) {
       setInfo(true);
     }
   }
-  if (info) {
-    navigate('/patient/appoiments');
-  }
 
   return (
     <div className="times">

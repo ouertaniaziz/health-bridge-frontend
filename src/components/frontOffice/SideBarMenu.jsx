@@ -72,7 +72,6 @@ const LinkItemsPharmacist: Array<LinkItemProps> = [
   { name: 'Settings', icon: FiSettings, route: '' },
 ];
 
-
 export default function SidebarWithHeader({
   children,
 }: {
@@ -154,7 +153,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
               {link.name}
             </NavItem>
           ))
-          
         : null}
     </Box>
   );
@@ -259,7 +257,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                 <Avatar
                   size={'sm'}
                   src={
-                    'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                    'https://ik.imagekit.io/r5nhyj1e1/Doctor-PNG-Image.png?updatedAt=1682301245002'
                   }
                 />
                 <VStack

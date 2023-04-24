@@ -16,6 +16,7 @@
     "field": "^1.0.1",
     "formik": "^2.2.9",
     "framer-motion": "^6.5.1",
+    "moment": "^2.29.4",
     "passport-facebook": "^3.0.0",
     "react": "^18.2.0",
     "react-calendar": "^4.2.1",
