@@ -9,14 +9,13 @@ import { UserContext } from './UserProvider';
 const AppointmentsList = () => {
   const [appointments, setAppointments] = useState([]);
   const navigate = useNavigate();
-  const user = useContext(UserContext);
-  console.log(user);
-  const doctorId = user.doctor._id;
+
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     const getAppointments = async () => {
       console.log('ggeffsd');
-      const response = await getAppoimentByDoctor(doctorId);
+      const response = await getAppoimentByDoctor(user.id);
       const sortedAppointments = response.data.sort((a, b) => {
         const dateA = new Date(a.date);
         const dateB = new Date(b.date);
@@ -28,7 +27,7 @@ const AppointmentsList = () => {
     };
 
     getAppointments();
-  }, [doctorId]);
+  });
   const navigateToPrescription = (e, patienId) => {
     e.preventDefault();
 
@@ -36,7 +35,7 @@ const AppointmentsList = () => {
   };
   return (
     <div>
-      <h2>Appointments for Doctor {doctorId}</h2>
+      <h2>Appointments for Doctor </h2>
       <table>
         <thead>
           <tr>
