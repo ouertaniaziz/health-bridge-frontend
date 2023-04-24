@@ -52,10 +52,26 @@ export const getDoctor = () => {
       return response.data;
     });
 };
+
+export const getPoliclinicAdmin = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  return axiosInstance
+    .post('/policlinic/profile', {
+      userId: user.id,
+    })
+    .then(response => {
+      if (response.data) {
+      }
+
+      return response.data;
+    });
+};
 const authService = {
   addUser,
   login,
   logout,
   getDoctor,
+  getPoliclinicAdmin,
 };
 export default authService;

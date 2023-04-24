@@ -66,6 +66,15 @@ const LinkItemsPatient: Array<LinkItemProps> = [
   { name: 'Settings', icon: FiSettings, route: '' },
 ];
 
+const LinkItemsPoliclinicAdmin: Array<LinkItemProps> = [
+  { name: 'Home', icon: FiHome, route: '/policlinic/dashbord' },
+  { name: 'Profile', icon: FiTrendingUp, route: '/policlinic/Profile' },
+  { name: 'Management', icon: FiCompass, route: '/policlinic/Managment' },
+  { name: 'Prescriptions', icon: FiStar, route: '/prescriptions' },
+
+  { name: 'Settings', icon: FiSettings, route: '' },
+ 
+];
 export default function SidebarWithHeader({
   children,
 }: {
