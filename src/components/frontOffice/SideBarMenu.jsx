@@ -59,7 +59,7 @@ const LinkItemsDoctor: Array<LinkItemProps> = [
 const LinkItemsPatient: Array<LinkItemProps> = [
   { name: 'Home', icon: FiHome, route: '/patient' },
   { name: 'Profile', icon: FiTrendingUp, route: '/patient/profile' },
-  { name: 'Account', icon: FiCompass, route: '/patient/account' },
+  { name: 'Appoiments', icon: FiCompass, route: '/patient/appoiments' },
   { name: 'Favourites', icon: FiStar, route: '' },
   { name: 'Settings', icon: FiSettings, route: '' },
 ];

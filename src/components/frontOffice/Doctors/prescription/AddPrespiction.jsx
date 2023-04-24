@@ -13,7 +13,7 @@ const AddPrespiction = () => {
       }
     };
     fetchMedication();
-  });
+  },[]);
   let MedicationAff;
   if (Medication.length !== 0) {
     console.log(Medication, 'test');
