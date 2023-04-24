@@ -19,9 +19,9 @@ export const updatepatient = user => {
       user,
     })
     .then(response => {
-      //const status = response.status;
-      console.log('response', response.data);
-
+      const status = response.status;
+      console.log('response',  response.data);
+      return status
       // if (status === 200) {
       //   console.log(response.data);
 
@@ -39,6 +39,12 @@ export const verifycin = form => {
     console.log(response.data);
 
     return response.data.status;
+  });
+};
+export const uploadfilespatient = form => {
+  return axiosInstance.post('/patient/addfiles', form).then(response => {
+    console.log(response.data);
+    return response.data;
   });
 };
 export const addAppoiment = data => {
@@ -62,5 +68,6 @@ export const getAllDoctors = () => {
 const patientservice = {
   getpatient,
   verifycin,
+  uploadfilespatient,
 };
 export default patientservice;

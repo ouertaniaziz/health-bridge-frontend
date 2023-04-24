@@ -23,12 +23,14 @@ const patientslice = createSlice({
       state: '',
       postal_code: '',
       cinverified: '',
+      status: 0,
     },
   },
   reducers: {
     addpatient: (state, action) => {
       state.value = action.payload;
-    //  console.log('sate', state.value);
+      //  console.log('sate', state.value);
+
       console.log(state.value.cinverified);
     },
     updatepatientredux: (state, action) => {
@@ -54,9 +56,13 @@ const patientslice = createSlice({
       //   email:state.value.email,
       //   phone:state.value.phone,
       //   city: state.value.city,
-        
+
       // });
-      updatepatient(state.value)
+      let value
+       updatepatient(state.value);
+      
+        console.log(value)
+      //console.log(status)
     },
     setverified: (state, action) => {
       console.log('old', state.value.cinverified);
