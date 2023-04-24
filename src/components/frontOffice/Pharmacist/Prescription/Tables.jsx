@@ -77,8 +77,8 @@ const Tables = ({ medications }) => {
                   </Badge>
                 </Td>
                 <Td>{medication.numPackets}</Td>
-                <Td>{medication.creationDate}</Td>
-                <Td>{medication.expDate}</Td>
+                <Td>{medication.validationPeriod}</Td>
+                <Td>{medication.expirationDate}</Td>
                 <Td>{medication.price}</Td>
                 <Td>
                   <Button
