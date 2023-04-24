@@ -19,6 +19,7 @@ const DoctorProfile = () => {
           flexDirection={{ base: 'column', md: 'row' }}
         >
           <SocialProfileSimple user={user.user} doctor={user.doctor} />
+
           <DoctorInformation user={user.user} />
         </HStack>
       </>
