@@ -19,6 +19,7 @@ import * as Yup from 'yup';
 
 function AccountSettings(props) {
   const patient = useSelector(state => state.patient.value);
+  const status = useSelector(state => state.patient.value.status);
   const dispatch = useDispatch();
   // const onValueChange = e => {
   //   // setProduct({ ...product, [e.target.name]: e.target.value });
@@ -234,6 +235,7 @@ function AccountSettings(props) {
                 )}
               </Field>
             </HStack>
+           
             <Box
               mt={5}
               py={5}
@@ -248,6 +250,7 @@ function AccountSettings(props) {
                   opacity: !isValid ? 0.5 : 1,
                   pointerEvents: !isValid ? 'none' : 'auto',
                 }}
+                
               >
                 Update
               </Button>
