@@ -35,6 +35,7 @@ import {
   FiUsers,
   FiFileText,
 } from 'react-icons/fi';
+import { FaCapsules } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -63,7 +64,11 @@ const LinkItemsPatient: Array<LinkItemProps> = [
   // { name: 'Favourites', icon: FiStar, route: '' },
   { name: 'Appoiments', icon: FiCompass, route: '/patient/appoiments' },
 
-  // { name: 'Settings', icon: FiSettings, route: '' },
+  {
+    name: 'Prescription',
+    icon: FaCapsules,
+    route: '/patient/Prescription',
+  },
 ];
 
 const LinkItemsPharmacist: Array<LinkItemProps> = [
@@ -84,11 +89,6 @@ export default function SidebarWithHeader({
 
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-        role={state.role}
-      />
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
@@ -96,7 +96,6 @@ export default function SidebarWithHeader({
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full"
       >
         <DrawerContent>
           <SidebarContent onClose={onClose} role={state.role} />
@@ -104,9 +103,7 @@ export default function SidebarWithHeader({
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} state={state} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
-      </Box>
+      <Box p="4">{children}</Box>
     </Box>
   );
 }
@@ -135,7 +132,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
             className="imagelogo"
           />
         </Text>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+        <CloseButton display={{ base: 'flex', md: 'flex' }} onClick={onClose} />
       </Flex>
       {rest.role === 'doctor'
         ? LinkItemsDoctor.map(link => (
@@ -210,30 +207,24 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const navigate = useNavigate();
   return (
     <Flex
-      ml={{ base: 0, md: 60 }}
+      ml={{ base: 0, md: 0 }}
       px={{ base: 4, md: 4 }}
       height="20"
       alignItems="center"
       bg={useColorModeValue('white', 'gray.900')}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent={{ base: 'space-between', md: 'flex-end' }}
+      justifyContent={{ base: 'space-between', md: 'space-between' }}
       {...rest}
     >
       <IconButton
-        display={{ base: 'flex', md: 'none' }}
         onClick={onOpen}
         variant="outline"
         aria-label="open menu"
         icon={<FiMenu />}
       />
 
-      <Text
-        display={{ base: 'flex', md: 'none' }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
-      >
+      <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
         <img
           src={require('./../healthLogo.png')}
           alt="logo"
@@ -241,7 +232,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         />
       </Text>
 
-      <HStack spacing={{ base: '0', md: '6' }}>
+      <HStack>
         <IconButton
           size="lg"
           variant="ghost"
@@ -262,12 +253,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                     'https://ik.imagekit.io/r5nhyj1e1/Doctor-PNG-Image.png?updatedAt=1682301245002'
                   }
                 />
-                <VStack
-                  display={{ base: 'none', md: 'flex' }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2"
-                >
+                <VStack alignItems="flex-start" spacing="1px" ml="2">
                   <Text fontSize="sm">{rest.state.username}</Text>
                   <Text fontSize="xs" color="gray.600">
                     {rest.state.role}

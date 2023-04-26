@@ -25,8 +25,9 @@ const AppointmentsList = () => {
 
       setAppointments(sortedAppointments);
     };
-
-    getAppointments();
+    if (Object.keys(appointments).length === 0) {
+      getAppointments();
+    }
   });
   const navigateToPrescription = (e, patienId) => {
     e.preventDefault();

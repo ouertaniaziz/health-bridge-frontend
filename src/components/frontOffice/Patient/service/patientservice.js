@@ -11,6 +11,20 @@ export const getpatient = usernam => {
       return response.data;
     });
 };
+export const getPrescription = patientId => {
+  return axiosInstance
+    .get(`/prescription/${patientId}/patients`)
+    .then(response => {
+      console.log('response', response.data);
+      return response.data;
+    });
+};
+export const getPrescriptionById = prescriptionId => {
+  return axiosInstance.get(`/prescription/${prescriptionId}`).then(response => {
+    console.log('response', response.data);
+    return response.data;
+  });
+};
 
 export const updatepatient = user => {
   console.log('triggered', user);
@@ -20,8 +34,8 @@ export const updatepatient = user => {
     })
     .then(response => {
       const status = response.status;
-      console.log('response',  response.data);
-      return status
+      console.log('response', response.data);
+      return status;
       // if (status === 200) {
       //   console.log(response.data);
 
