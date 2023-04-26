@@ -51,7 +51,9 @@ const RoutesPage = () => {
                 <Route path="patient/*" element={<PatientRoutes />} />
               )}
               {isDoctor && <Route path="doctor/*" element={<DoctorRoutes />} />}
-              {isPharmacist && <Route path="pharmacist/*" element={<PharmacistRoutes />} />}
+              {isPharmacist && (
+                <Route path="pharmacist/*" element={<PharmacistRoutes />} />
+              )}
             </Routes>
           </Suspense>
         </SidebarWithHeader>
